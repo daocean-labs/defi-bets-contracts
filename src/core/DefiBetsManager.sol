@@ -8,7 +8,7 @@ import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 import "../interface/core/IDefiBets.sol";
-// import "../interface/math/IDefiBetsMath.sol";
+import "../interface/core/IPointTracker.sol";
 
 // Library import
 import "../lib/MathLibraryDefiBets.sol";
@@ -37,8 +37,7 @@ contract DefiBetsManager is Pausable, Ownable {
 
     /* ====== State Variables ====== */
 
-    address public liquidityPool;
-    address public payoutRatioContract;
+    address public pointTracker;
 
     mapping(bytes32 => IVFeed) public underlyingIVFeeds;
     mapping(bytes32 => address) public underlyingPriceFeeds;
@@ -55,6 +54,8 @@ contract DefiBetsManager is Pausable, Ownable {
     event FeeUpdated(uint256 feePpm);
     event IVFeedUpdated(bytes32 underlying, address feed, uint256 period);
     event PayoutFactorUpdated(uint256 payoutFactor);
+
+    /* ====== Modifier ====== */
 
     constructor() {}
 
@@ -102,6 +103,8 @@ contract DefiBetsManager is Pausable, Ownable {
             _expTime,
             _winning
         );
+
+        IPointTracker(pointTracker).reducePointsForPlayer(msg.sender, _betSize);
     }
 
     /**
@@ -152,12 +155,8 @@ contract DefiBetsManager is Pausable, Ownable {
 
     /* ====== Setup Functions ====== */
 
-    function setAddresses(
-        address _liquidityPool,
-        address _payoutRatioContract
-    ) external onlyOwner {
-        liquidityPool = _liquidityPool;
-        payoutRatioContract = _payoutRatioContract;
+    function setPointTracker(address _pointTracker) external onlyOwner {
+        pointTracker = _pointTracker;
     }
 
     function addUnderlyingToken(
@@ -239,12 +238,6 @@ contract DefiBetsManager is Pausable, Ownable {
     function _isValidUnderlying(bytes32 _hash) internal view {
         if (validUnderlying[_hash] == false) {
             revert DefiBetsManager__NoValidUnderlying();
-        }
-    }
-
-    function _isPayoutRatioContract() internal view {
-        if (msg.sender != payoutRatioContract) {
-            revert DefiBetsManager__AccessForbidden();
         }
     }
 

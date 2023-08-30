@@ -11,8 +11,12 @@ contract PointTracker is Ownable {
     error PointTracker__AccountNotEligible();
     error PointTracker__SeasonIsNotActive();
     error PointTracker__PlayerNotActive();
+    error PointTracker__SeasonIsActive();
+    error PointTracker__NotEndOfSeasonReached();
+    error PointTracker__NotEnoughPoints();
 
     uint256 public constant MINIMUM_DFI_AMOUNT = 10 ether;
+    uint256 public constant STARTING_POINTS = 100;
 
     /* === State Varibales === */
     address private manager;
@@ -40,9 +44,16 @@ contract PointTracker is Ownable {
     );
 
     /* === Modifier === */
-    modifier isSeasonActive() {
+    modifier seasonIsActive() {
         if (seasonActive == false) {
             revert PointTracker__SeasonIsNotActive();
+        }
+        _;
+    }
+
+    modifier seasonNotActive() {
+        if (seasonActive == true) {
+            revert PointTracker__SeasonIsActive();
         }
         _;
     }
@@ -56,7 +67,7 @@ contract PointTracker is Ownable {
     function addPointsForPlayer(
         address _player,
         uint256 _points
-    ) external isSeasonActive {
+    ) external seasonIsActive {
         _isManager();
         _isPlayerActive(_player);
 
@@ -68,16 +79,17 @@ contract PointTracker is Ownable {
     function reducePointsForPlayer(
         address _player,
         uint256 _points
-    ) external isSeasonActive {
+    ) external seasonIsActive {
         _isManager();
         _isPlayerActive(_player);
+        _hasEnoughPoints(_player, _points);
 
         pointsInSeason[season][_player]--;
 
         emit PointsRemoved(_player, _points, pointsInSeason[season][_player]);
     }
 
-    function activateAccount() external isSeasonActive {
+    function activateAccount() external seasonIsActive {
         if (isActivated[season][msg.sender] == true) {
             revert PointTracker__AccountAlreadyActivated();
         }
@@ -86,22 +98,29 @@ contract PointTracker is Ownable {
             revert PointTracker__AccountNotEligible();
         }
 
-        pointsInSeason[season][msg.sender] = 100;
+        pointsInSeason[season][msg.sender] = STARTING_POINTS;
         isActivated[season][msg.sender] = true;
 
         emit AccountActivation(msg.sender, season);
     }
 
-    function finishSeason() external onlyOwner {
+    function finishSeason() external onlyOwner seasonIsActive {
+        if (block.timestamp < endOfSeason) {
+            revert PointTracker__NotEndOfSeasonReached();
+        }
         seasonActive = false;
 
         emit SeasonFinished(season);
     }
 
-    function startSeason() external onlyOwner {
+    function startSeason(
+        uint256 _endOfSeason
+    ) external onlyOwner seasonNotActive {
         seasonActive = true;
 
         season++;
+
+        endOfSeason = _endOfSeason;
 
         emit SeasonStarted(season);
     }
@@ -117,6 +136,12 @@ contract PointTracker is Ownable {
     function _isPlayerActive(address _player) internal view {
         if (isActivated[season][_player] == false) {
             revert PointTracker__PlayerNotActive();
+        }
+    }
+
+    function _hasEnoughPoints(address _player, uint256 _points) internal view {
+        if (pointsInSeason[season][_player] > _points) {
+            revert PointTracker__NotEnoughPoints();
         }
     }
 

@@ -5,4 +5,6 @@ interface IPointTracker {
     function reducePointsForPlayer(address _player, uint256 _points) external;
 
     function addPointsForPlayer(address _player, uint256 _points) external;
+
+    function getSeasonEndDate() external view returns (uint256);
 }

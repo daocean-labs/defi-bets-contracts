@@ -22,7 +22,7 @@ library MathLibraryDefibets {
     uint256 public constant BILLION = 1000000000;
     uint256 public constant Z_TABLE_MAX = 59; // 60 values per table with each value 2 byte length
 
-    function abs(int x) private pure returns (int) {
+    function abs(int256 x) private pure returns (int256) {
         return x >= 0 ? x : -x;
     }
 
@@ -32,21 +32,13 @@ library MathLibraryDefibets {
         uint256 timeUntilEpxiry,
         uint256 impliedVolatitityTime
     ) internal pure returns (uint256) {
-        uint256 adjImpliedVol = (
-            impliedVolatility30.mul(
-                Math.sqrt(
-                    timeUntilEpxiry.mul(10 ** 8).div(impliedVolatitityTime)
-                )
-            )
-        ).div(10000);
+        uint256 adjImpliedVol =
+            (impliedVolatility30.mul(Math.sqrt(timeUntilEpxiry.mul(10 ** 8).div(impliedVolatitityTime)))).div(10000);
 
         return (currPrice.mul(adjImpliedVol)).div(10000);
     }
 
-    function toUint16(
-        bytes memory _bytes,
-        uint256 _start
-    ) internal pure returns (uint16) {
+    function toUint16(bytes memory _bytes, uint256 _start) internal pure returns (uint16) {
         require(_bytes.length >= _start + 2, "toUint16_outOfBounds");
         uint16 tempUint;
 
@@ -61,17 +53,11 @@ library MathLibraryDefibets {
      *
      * @dev - return the zScore with 4 decimals
      */
-    function calculateZScore(
-        uint256 _delta,
-        uint256 _stdDeviation
-    ) internal pure returns (uint256) {
+    function calculateZScore(uint256 _delta, uint256 _stdDeviation) internal pure returns (uint256) {
         return _delta.mul(10 ** 4).div(_stdDeviation);
     }
 
-    function lookupZtableFromStdDeviation(
-        uint256 zScore,
-        bool useNegativeZTable
-    ) private pure returns (uint16) {
+    function lookupZtableFromStdDeviation(uint256 zScore, bool useNegativeZTable) private pure returns (uint16) {
         uint256 index = zScore.div(500);
 
         if (Z_TABLE_MAX < index) {
@@ -80,9 +66,7 @@ library MathLibraryDefibets {
 
         if (useNegativeZTable) {
             // use negative Z-Table
-            index =
-                Z_TABLE_MAX -
-                index; /* Invert for negative Z-Table values */
+            index = Z_TABLE_MAX - index; /* Invert for negative Z-Table values */
             return toUint16(z_table_negative, index);
         } else {
             // use positive Z-Table
@@ -90,11 +74,11 @@ library MathLibraryDefibets {
         }
     }
 
-    function calculateProbabilityForBetPrice(
-        uint256 betPrice,
-        uint256 currPrice,
-        uint256 stdDeviation
-    ) internal pure returns (uint16) {
+    function calculateProbabilityForBetPrice(uint256 betPrice, uint256 currPrice, uint256 stdDeviation)
+        internal
+        pure
+        returns (uint16)
+    {
         uint256 delta = 0;
         bool isNegative = false;
 
@@ -132,38 +116,25 @@ library MathLibraryDefibets {
             revert MathLibraryDefibets__WrongParameter();
         }
 
-        uint256 stdDeviation = calculateStandardDeviation(
-            currPrice,
-            impliedVolatility,
-            timeUntilEpxiry,
-            impliedVolatilityTime
-        );
+        uint256 stdDeviation =
+            calculateStandardDeviation(currPrice, impliedVolatility, timeUntilEpxiry, impliedVolatilityTime);
 
         //-----------------------------------------------------
         // 1. calculate probability for lower range boundary
         //-----------------------------------------------------
 
-        uint16 propability_lower_10000 = calculateProbabilityForBetPrice(
-            lowerPrice,
-            currPrice,
-            stdDeviation
-        );
+        uint16 propability_lower_10000 = calculateProbabilityForBetPrice(lowerPrice, currPrice, stdDeviation);
 
         //-----------------------------------------------------
         // 2. calculate probability for higher range boundary
         //-----------------------------------------------------
 
-        uint16 propability_higher_10000 = calculateProbabilityForBetPrice(
-            upperPrice,
-            currPrice,
-            stdDeviation
-        );
+        uint16 propability_higher_10000 = calculateProbabilityForBetPrice(upperPrice, currPrice, stdDeviation);
 
         //---------------------------------------------------------------
         // 3. calculate end probability for the range. (higher - lower)
         //---------------------------------------------------------------
-        uint256 probability = propability_higher_10000 -
-            propability_lower_10000;
+        uint256 probability = propability_higher_10000 - propability_lower_10000;
 
         return (probability);
     }

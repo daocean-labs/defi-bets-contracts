@@ -2,7 +2,6 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 import {Test, console} from "forge-std/Test.sol";
-import {HelperConfig} from "../../script/HelperConfig.s.sol";
 import {PointTracker} from "../../src/core/PointTracker.sol";
 
 contract PointTrackerTest is Test {
@@ -75,14 +74,9 @@ contract PointTrackerTest is Test {
         pointTracker.finishSeason();
     }
 
-    function testFinishSeasonFailedWhenTheEndOfSeasonDidntPass()
-        external
-        seasonStarted
-    {
+    function testFinishSeasonFailedWhenTheEndOfSeasonDidntPass() external seasonStarted {
         //Act + Assert
-        vm.expectRevert(
-            PointTracker.PointTracker__NotEndOfSeasonReached.selector
-        );
+        vm.expectRevert(PointTracker.PointTracker__NotEndOfSeasonReached.selector);
 
         vm.prank(OWNER);
         pointTracker.finishSeason();
@@ -105,10 +99,7 @@ contract PointTrackerTest is Test {
         assertEq(points, 100);
     }
 
-    function testActivateAccountFailedWhenCallerHasNotEnoughETH()
-        external
-        seasonStarted
-    {
+    function testActivateAccountFailedWhenCallerHasNotEnoughETH() external seasonStarted {
         //Arrange
         vm.deal(PLAYER, 0);
         vm.prank(PLAYER);
@@ -119,10 +110,7 @@ contract PointTrackerTest is Test {
         pointTracker.activateAccount();
     }
 
-    function testActivateAccountFailedWhenAccountAlreadyActivated()
-        external
-        seasonStarted
-    {}
+    function testActivateAccountFailedWhenAccountAlreadyActivated() external seasonStarted {}
 
     ////////////////////////
     // addPointsForPlayer //

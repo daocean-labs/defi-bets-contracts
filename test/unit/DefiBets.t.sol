@@ -2,7 +2,6 @@
 pragma solidity >=0.8.0 <0.9.0;
 
 import {Test, console} from "forge-std/Test.sol";
-import {HelperConfig} from "../../script/HelperConfig.s.sol";
 import {DefiBets} from "../../src/core/DefiBets.sol";
 
 contract DefiBetsTest is Test {
@@ -27,17 +26,6 @@ contract DefiBetsTest is Test {
     uint256 public constant WINNING = 200;
 
     function setUp() external {
-        HelperConfig config = new HelperConfig();
-
-        (
-            underlying,
-            timeDelta,
-            dependentTimeStamp,
-            minBetDuration,
-            maxBetDuration,
-            slot
-        ) = config.activeNetworkConfig();
-
         defiBets = new DefiBets(underlying, MANAGER, timeDelta);
 
         vm.deal(PLAYER, STARTING_USER_BALANCE);
@@ -46,12 +34,7 @@ contract DefiBetsTest is Test {
 
     modifier isInitialized() {
         vm.prank(MANAGER);
-        defiBets.initializeData(
-            dependentTimeStamp,
-            minBetDuration,
-            maxBetDuration,
-            slot
-        );
+        defiBets.initializeData(dependentTimeStamp, minBetDuration, maxBetDuration, slot);
         _;
     }
 
@@ -66,14 +49,7 @@ contract DefiBetsTest is Test {
         vm.prank(MANAGER);
 
         //Act
-        defiBets.setBetForAccount(
-            PLAYER,
-            BET_SIZE,
-            MIN_PRICE,
-            MAX_PRICE,
-            expTime,
-            WINNING
-        );
+        defiBets.setBetForAccount(PLAYER, BET_SIZE, MIN_PRICE, MAX_PRICE, expTime, WINNING);
         DefiBets.Bet memory bet = defiBets.getBetData(1);
 
         //Assert
@@ -90,13 +66,6 @@ contract DefiBetsTest is Test {
         //Act + Assert
         vm.expectRevert(DefiBets.DefiBets__ParameterNotInitialized.selector);
 
-        defiBets.setBetForAccount(
-            PLAYER,
-            BET_SIZE,
-            MIN_PRICE,
-            MAX_PRICE,
-            10,
-            WINNING
-        );
+        defiBets.setBetForAccount(PLAYER, BET_SIZE, MIN_PRICE, MAX_PRICE, 10, WINNING);
     }
 }

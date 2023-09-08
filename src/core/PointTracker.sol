@@ -21,6 +21,7 @@ contract PointTracker is Ownable {
     /* === State Varibales === */
     address private manager;
     uint256 private season;
+
     uint256 private endOfSeason;
 
     bool private seasonActive;
@@ -32,22 +33,15 @@ contract PointTracker is Ownable {
     event AccountActivation(address indexed player, uint256 season);
     event SeasonFinished(uint256 season);
     event SeasonStarted(uint256 season);
-    event PointsAdded(
-        address indexed player,
-        uint256 pointsAdded,
-        uint256 newScore
-    );
-    event PointsRemoved(
-        address indexed player,
-        uint256 pointsRemoved,
-        uint256 newScore
-    );
+    event PointsAdded(address indexed player, uint256 pointsAdded, uint256 newScore);
+    event PointsRemoved(address indexed player, uint256 pointsRemoved, uint256 newScore);
 
     /* === Modifier === */
     modifier seasonIsActive() {
         if (seasonActive == false) {
             revert PointTracker__SeasonIsNotActive();
         }
+
         _;
     }
 
@@ -64,10 +58,7 @@ contract PointTracker is Ownable {
 
     /* === Mutation Functions === */
 
-    function addPointsForPlayer(
-        address _player,
-        uint256 _points
-    ) external seasonIsActive {
+    function addPointsForPlayer(address _player, uint256 _points) external seasonIsActive {
         _isManager();
         _isPlayerActive(_player);
 
@@ -76,10 +67,7 @@ contract PointTracker is Ownable {
         emit PointsAdded(_player, _points, pointsInSeason[season][_player]);
     }
 
-    function reducePointsForPlayer(
-        address _player,
-        uint256 _points
-    ) external seasonIsActive {
+    function reducePointsForPlayer(address _player, uint256 _points) external seasonIsActive {
         _isManager();
         _isPlayerActive(_player);
         _hasEnoughPoints(_player, _points);
@@ -113,9 +101,7 @@ contract PointTracker is Ownable {
         emit SeasonFinished(season);
     }
 
-    function startSeason(
-        uint256 _endOfSeason
-    ) external onlyOwner seasonNotActive {
+    function startSeason(uint256 _endOfSeason) external onlyOwner seasonNotActive {
         seasonActive = true;
 
         season++;
@@ -155,10 +141,7 @@ contract PointTracker is Ownable {
         return season;
     }
 
-    function getPlayerPoints(
-        uint256 _season,
-        address _player
-    ) public view returns (uint256) {
+    function getPlayerPoints(uint256 _season, address _player) public view returns (uint256) {
         if (_season > season) {
             revert PointTracker__SeasonOutOfBounds();
         }

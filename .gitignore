@@ -12,3 +12,20 @@ docs/
 
 # Dotenv file
 .env
+node_modules
+
+node_modules
+.env
+coverage
+coverage.json
+typechain
+typechain-types
+
+# Hardhat files
+cache
+artifacts
+cache_hardhat
+
+deployments/localhost
+deployments/dmcTestnet/solcInputs
+

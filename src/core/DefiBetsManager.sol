@@ -20,6 +20,7 @@ error DefiBetsManager__FeeWouldBeTooSmall();
 error DefiBetsManager__ParamNull();
 error DefiBetsManager__NotValidRoundId();
 error DefiBetsManager__AccessForbidden();
+error DefiBetsManager__ExpTimeNotValid();
 
 /**
  * @title DefiBets Manager Contract
@@ -45,11 +46,7 @@ contract DefiBetsManager is Pausable, Ownable {
     mapping(bytes32 => address) public defiBetsContracts;
 
     /* ====== Events ====== */
-    event UnderlyingAdded(
-        string underlying,
-        bytes32 underlyingHash,
-        address defiBets
-    );
+    event UnderlyingAdded(string underlying, bytes32 underlyingHash, address defiBets);
     event PriceFeedUpdated(bytes32 underlying, address priceFeed);
     event FeeUpdated(uint256 feePpm);
     event IVFeedUpdated(bytes32 underlying, address feed, uint256 period);
@@ -70,39 +67,26 @@ contract DefiBetsManager is Pausable, Ownable {
      * @param _expTime The expiration time for the bet.
      * @param _underlying The underlying asset for the bet.
      */
-    function setBet(
-        uint256 _betSize,
-        uint256 _minPrice,
-        uint256 _maxPrice,
-        uint256 _expTime,
-        string memory _underlying
-    ) external whenNotPaused {
+    function setBet(uint256 _betSize, uint256 _minPrice, uint256 _maxPrice, uint256 _expTime, string memory _underlying)
+        external
+        whenNotPaused
+    {
         bytes32 _hash = getUnderlyingByte(_underlying);
         _isValidUnderlying(_hash);
+
+        if (_expTime > IPointTracker(pointTracker).getSeasonEndDate()) {
+            revert DefiBetsManager__ExpTimeNotValid();
+        }
 
         //TODO: Check if the account has enough points
 
         uint256 _price = getCurrPrice(_hash);
 
-        uint256 _winning = calculateWinning(
-            _price,
-            _betSize,
-            _minPrice,
-            _maxPrice,
-            _expTime,
-            _hash
-        );
+        uint256 _winning = calculateWinning(_price, _betSize, _minPrice, _maxPrice, _expTime, _hash);
 
         address _defiBets = defiBetsContracts[_hash];
 
-        _executeBetForAccount(
-            _defiBets,
-            _betSize,
-            _minPrice,
-            _maxPrice,
-            _expTime,
-            _winning
-        );
+        _executeBetForAccount(_defiBets, _betSize, _minPrice, _maxPrice, _expTime, _winning);
 
         IPointTracker(pointTracker).reducePointsForPlayer(msg.sender, _betSize);
     }
@@ -112,16 +96,15 @@ contract DefiBetsManager is Pausable, Ownable {
      * @param _tokenId The token ID representing the bet.
      * @param _hash The hash of the underlying asset for the bet.
      */
-    function claimWinnings(
-        uint256 _tokenId,
-        bytes32 _hash
-    ) external whenNotPaused {
+    function claimWinnings(uint256 _tokenId, bytes32 _hash) external whenNotPaused {
         address _defiBets = defiBetsContracts[_hash];
 
-        (uint256 _tokenAmount, bool _profit) = IDefiBets(_defiBets)
-            .claimForAccount(msg.sender, _tokenId);
+        (uint256 _tokenAmount, bool _profit) = IDefiBets(_defiBets).claimForAccount(msg.sender, _tokenId);
 
         //Update the points of the user
+        if (_profit) {
+            IPointTracker(pointTracker).addPointsForPlayer(msg.sender, _tokenAmount);
+        }
     }
 
     /**
@@ -130,11 +113,7 @@ contract DefiBetsManager is Pausable, Ownable {
      * @param _underlying The underlying asset for the bet.
      * @param _roundId The round id for a valid price of the underlying
      */
-    function executeExpiration(
-        uint256 _expTime,
-        string memory _underlying,
-        uint80 _roundId
-    ) external whenNotPaused {
+    function executeExpiration(uint256 _expTime, string memory _underlying, uint80 _roundId) external whenNotPaused {
         bytes32 _hash = getUnderlyingByte(_underlying);
         _isValidUnderlying(_hash);
 
@@ -159,11 +138,7 @@ contract DefiBetsManager is Pausable, Ownable {
         pointTracker = _pointTracker;
     }
 
-    function addUnderlyingToken(
-        string memory _underlying,
-        address _feed,
-        address _defiBets
-    ) external onlyOwner {
+    function addUnderlyingToken(string memory _underlying, address _feed, address _defiBets) external onlyOwner {
         bytes32 _hash = getUnderlyingByte(_underlying);
 
         validUnderlying[_hash] = true;
@@ -183,11 +158,7 @@ contract DefiBetsManager is Pausable, Ownable {
         emit PriceFeedUpdated(_hash, _feed);
     }
 
-    function updateIVFeed(
-        bytes32 _hash,
-        address _feed,
-        uint256 _period
-    ) public onlyOwner {
+    function updateIVFeed(bytes32 _hash, address _feed, uint256 _period) public onlyOwner {
         _isValidUnderlying(_hash);
 
         underlyingIVFeeds[_hash] = IVFeed(_feed, _period);
@@ -204,12 +175,7 @@ contract DefiBetsManager is Pausable, Ownable {
     ) external onlyOwner {
         address _defiBets = defiBetsContracts[_hash];
 
-        IDefiBets(_defiBets).initializeData(
-            _startExpTime,
-            _minBetDuration,
-            _maxBetDuration,
-            _slot
-        );
+        IDefiBets(_defiBets).initializeData(_startExpTime, _minBetDuration, _maxBetDuration, _slot);
     }
 
     function setDefiBetsParameter(
@@ -225,11 +191,7 @@ contract DefiBetsManager is Pausable, Ownable {
         address _defiBetsAddress = defiBetsContracts[_hash];
 
         IDefiBets(_defiBetsAddress).setBetParamater(
-            _maxBetDuration,
-            _minBetDuration,
-            _slot,
-            _timeDelta,
-            _dependentTimeStamp
+            _maxBetDuration, _minBetDuration, _slot, _timeDelta, _dependentTimeStamp
         );
     }
 
@@ -249,14 +211,7 @@ contract DefiBetsManager is Pausable, Ownable {
         uint256 _expTime,
         uint256 _winning
     ) internal {
-        IDefiBets(_defiBets).setBetForAccount(
-            msg.sender,
-            _betSize,
-            _minPrice,
-            _maxPrice,
-            _expTime,
-            _winning
-        );
+        IDefiBets(_defiBets).setBetForAccount(msg.sender, _betSize, _minPrice, _maxPrice, _expTime, _winning);
     }
 
     function _isRoundIdValid(
@@ -273,8 +228,7 @@ contract DefiBetsManager is Pausable, Ownable {
         }
 
         if (_roundId < _latestRoundId) {
-            (, , , uint256 _timestamp, ) = AggregatorV3Interface(_priceFeed)
-                .getRoundData(_roundId + 1);
+            (,,, uint256 _timestamp,) = AggregatorV3Interface(_priceFeed).getRoundData(_roundId + 1);
             _valid = _timestamp >= _expTime;
         }
 
@@ -287,10 +241,7 @@ contract DefiBetsManager is Pausable, Ownable {
         }
     }
 
-    function _calculateWinnings(
-        uint256 _value,
-        uint256 _probability
-    ) internal pure returns (uint256) {
+    function _calculateWinnings(uint256 _value, uint256 _probability) internal pure returns (uint256) {
         return (_value).mul(MULTIPLIER).div(_probability);
     }
 
@@ -301,48 +252,28 @@ contract DefiBetsManager is Pausable, Ownable {
 
         address _priceFeed = underlyingPriceFeeds[_hash];
 
-        (, int256 answer, , , ) = AggregatorV3Interface(_priceFeed)
-            .latestRoundData();
+        (, int256 answer,,,) = AggregatorV3Interface(_priceFeed).latestRoundData();
 
         price = uint256(answer);
 
         return price;
     }
 
-    function getPrice(
-        bytes32 _hash,
-        uint256 _expTime,
-        uint80 _roundId
-    ) public view returns (uint256) {
+    function getPrice(bytes32 _hash, uint256 _expTime, uint80 _roundId) public view returns (uint256) {
         uint256 price;
 
-        if (
-            underlyingPriceFeeds[_hash] != address(0) &&
-            block.timestamp >= _expTime
-        ) {
+        if (underlyingPriceFeeds[_hash] != address(0) && block.timestamp >= _expTime) {
             address _priceFeed = underlyingPriceFeeds[_hash];
 
-            (
-                uint80 _latestRoundId,
-                int256 _latestAnswer,
-                ,
-                uint256 _latestTimestamp,
+            (uint80 _latestRoundId, int256 _latestAnswer,, uint256 _latestTimestamp,) =
+                AggregatorV3Interface(_priceFeed).latestRoundData();
 
-            ) = AggregatorV3Interface(_priceFeed).latestRoundData();
-
-            _isRoundIdValid(
-                _expTime,
-                _roundId,
-                _latestRoundId,
-                _latestTimestamp,
-                _priceFeed
-            );
+            _isRoundIdValid(_expTime, _roundId, _latestRoundId, _latestTimestamp, _priceFeed);
 
             if (_latestRoundId == _roundId) {
                 price = uint256(_latestAnswer);
             } else {
-                (, int256 _answer, , , ) = AggregatorV3Interface(_priceFeed)
-                    .getRoundData(_roundId);
+                (, int256 _answer,,,) = AggregatorV3Interface(_priceFeed).getRoundData(_roundId);
                 price = uint256(_answer);
             }
         }
@@ -350,9 +281,7 @@ contract DefiBetsManager is Pausable, Ownable {
         return price;
     }
 
-    function getUnderlyingByte(
-        string memory _token
-    ) public pure returns (bytes32) {
+    function getUnderlyingByte(string memory _token) public pure returns (bytes32) {
         return keccak256(bytes(_token));
     }
 
@@ -368,7 +297,7 @@ contract DefiBetsManager is Pausable, Ownable {
         uint256 probability = MathLibraryDefibets.calculateProbabilityRange(
             _minPrice,
             _maxPrice,
-            _price /* current price BTC */,
+            _price, /* current price BTC */
             getImplVol(_hash),
             underlyingIVFeeds[_hash].period,
             (_expTime.sub(block.timestamp))
@@ -384,9 +313,7 @@ contract DefiBetsManager is Pausable, Ownable {
     }
 
     function getImplVol(bytes32 _hash) public view returns (uint256) {
-        (, int256 answer, , , ) = AggregatorV3Interface(
-            underlyingIVFeeds[_hash].feedAddress
-        ).latestRoundData();
+        (, int256 answer,,,) = AggregatorV3Interface(underlyingIVFeeds[_hash].feedAddress).latestRoundData();
 
         return uint256(answer);
     }

@@ -64,7 +64,7 @@ contract DefiBets is Ownable, IDefiBets {
     mapping(uint256 => ExpTimeInfo) public expTimeInfos;
     mapping(uint256 => Bet) private bets;
 
-    mapping(uint => mapping(uint256 => uint256)) public betsWinningSlots;
+    mapping(uint256 => mapping(uint256 => uint256)) public betsWinningSlots;
 
     address public defiBetsManager;
 
@@ -83,21 +83,13 @@ contract DefiBets is Ownable, IDefiBets {
     event Claimed(address indexed account, uint256 betID, bool profit);
     event Expiration(uint256 indexed expTime, uint256 expPrice);
     event BetParameterUpdated(
-        uint256 minBetDuration,
-        uint256 maxBetDuration,
-        uint256 slot,
-        uint256 timeDelta,
-        uint256 dependentTimeStamp
+        uint256 minBetDuration, uint256 maxBetDuration, uint256 slot, uint256 timeDelta, uint256 dependentTimeStamp
     );
 
     /**
      * @param _defiBetsManager - the manager and owner of the contract.
      */
-    constructor(
-        string memory _underlying,
-        address _defiBetsManager,
-        uint256 _timeDelta
-    ) {
+    constructor(string memory _underlying, address _defiBetsManager, uint256 _timeDelta) {
         underlying = _underlying;
 
         defiBetsManager = _defiBetsManager;
@@ -124,33 +116,15 @@ contract DefiBets is Ownable, IDefiBets {
         _isValidActiveTimeRange(_expTime);
         _validPriceRange(_minPrice, _maxPrice);
 
-        _createBetData(
-            _account,
-            _expTime,
-            _betSize,
-            _winning,
-            _minPrice,
-            _maxPrice
-        );
+        _createBetData(_account, _expTime, _betSize, _winning, _minPrice, _maxPrice);
 
         //Attention: This function has high gas costs!!!!
         _distributeWinningsToSlots(_minPrice, _maxPrice, _winning, _expTime);
 
-        emit BetPlaced(
-            _account,
-            _betSize,
-            _winning,
-            _expTime,
-            _minPrice,
-            _maxPrice,
-            betIDs.current()
-        );
+        emit BetPlaced(_account, _betSize, _winning, _expTime, _minPrice, _maxPrice, betIDs.current());
     }
 
-    function claimForAccount(
-        address _account,
-        uint256 _betID
-    ) external returns (uint256, bool) {
+    function claimForAccount(address _account, uint256 _betID) external returns (uint256, bool) {
         _isDefiBetManager();
         _isClaimed(_betID);
 
@@ -168,10 +142,7 @@ contract DefiBets is Ownable, IDefiBets {
         uint256 _tokensForClaim;
         bool _profits;
 
-        if (
-            _expInfo.expPrice >= _betTokenInfo.minPrice &&
-            _expInfo.expPrice < _betTokenInfo.maxPrice
-        ) {
+        if (_expInfo.expPrice >= _betTokenInfo.minPrice && _expInfo.expPrice < _betTokenInfo.maxPrice) {
             _tokensForClaim = _betTokenInfo.profit;
 
             _profits = true;
@@ -230,13 +201,7 @@ contract DefiBets is Ownable, IDefiBets {
 
         _isNotIntialized();
 
-        setBetParamater(
-            _minBetDuration,
-            _maxBetDuration,
-            _slot,
-            timeDelta,
-            _dependentTimeStamp
-        );
+        setBetParamater(_minBetDuration, _maxBetDuration, _slot, timeDelta, _dependentTimeStamp);
 
         _initializeExpTimes();
 
@@ -261,13 +226,7 @@ contract DefiBets is Ownable, IDefiBets {
         timeDelta = _timeDelta;
         dependentTimeStamp = _dependentTimeStamp;
 
-        emit BetParameterUpdated(
-            minBetDuration,
-            maxBetDuration,
-            slot,
-            timeDelta,
-            dependentTimeStamp
-        );
+        emit BetParameterUpdated(minBetDuration, maxBetDuration, slot, timeDelta, dependentTimeStamp);
     }
 
     function stop() external onlyOwner {
@@ -299,15 +258,12 @@ contract DefiBets is Ownable, IDefiBets {
         bets[newTokenId] = _newBet;
     }
 
-    function _distributeWinningsToSlots(
-        uint256 _minPrice,
-        uint256 _maxPrice,
-        uint256 _winning,
-        uint256 _expTime
-    ) internal {
+    function _distributeWinningsToSlots(uint256 _minPrice, uint256 _maxPrice, uint256 _winning, uint256 _expTime)
+        internal
+    {
         uint256 _slotAmount = (_maxPrice.sub(_minPrice)).div(slot);
 
-        for (uint i = 0; i < _slotAmount; i++) {
+        for (uint256 i = 0; i < _slotAmount; i++) {
             uint256 _slot = _minPrice.add(i.mul(slot));
 
             uint256 _slotWinning = betsWinningSlots[_expTime][_slot];
@@ -329,23 +285,13 @@ contract DefiBets is Ownable, IDefiBets {
     }
 
     function _isValidActiveTimeRange(uint256 _expTime) internal view {
-        if (
-            _expTime < block.timestamp.add(minBetDuration) ||
-            _expTime > block.timestamp.add(maxBetDuration)
-        ) {
+        if (_expTime < block.timestamp.add(minBetDuration) || _expTime > block.timestamp.add(maxBetDuration)) {
             revert DefiBets__OutOfActiveExpTimeRange();
         }
     }
 
-    function _validPriceRange(
-        uint256 minPrice,
-        uint256 maxPrice
-    ) internal view {
-        if (
-            (0 != (minPrice % slot)) ||
-            (0 != (maxPrice % slot)) ||
-            (minPrice >= maxPrice)
-        ) {
+    function _validPriceRange(uint256 minPrice, uint256 maxPrice) internal view {
+        if ((0 != (minPrice % slot)) || (0 != (maxPrice % slot)) || (minPrice >= maxPrice)) {
             revert DefiBets__NoValidPrice();
         }
     }
@@ -363,19 +309,15 @@ contract DefiBets is Ownable, IDefiBets {
     }
 
     function _initializeExpTimes() internal {
-        uint256 _timeSteps = (maxBetDuration.sub(minBetDuration)).div(
-            timeDelta
-        );
+        uint256 _timeSteps = (maxBetDuration.sub(minBetDuration)).div(timeDelta);
 
-        for (uint i = 0; i < _timeSteps; i++) {
+        for (uint256 i = 0; i < _timeSteps; i++) {
             uint256 _expTime = dependentTimeStamp.add(timeDelta.mul(i));
 
             _initExpTime(_expTime);
         }
 
-        lastActiveExpTime = dependentTimeStamp.add(
-            timeDelta.mul(_timeSteps.sub(1))
-        );
+        lastActiveExpTime = dependentTimeStamp.add(timeDelta.mul(_timeSteps.sub(1)));
     }
 
     function _initExpTime(uint256 _expTime) internal {

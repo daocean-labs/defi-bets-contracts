@@ -11,10 +11,7 @@ interface IDefiBets {
         uint256 _winning
     ) external;
 
-    function claimForAccount(
-        address _account,
-        uint256 _betID
-    ) external returns (uint256, bool);
+    function claimForAccount(address _account, uint256 _betID) external returns (uint256, bool);
 
     function setBetParamater(
         uint256 _minBetDuration,
@@ -30,10 +27,6 @@ interface IDefiBets {
 
     function lastActiveExpTime() external returns (uint256);
 
-    function initializeData(
-        uint256 _startExpTime,
-        uint256 _minBetDuration,
-        uint256 _maxBetDuration,
-        uint256 _slot
-    ) external;
+    function initializeData(uint256 _startExpTime, uint256 _minBetDuration, uint256 _maxBetDuration, uint256 _slot)
+        external;
 }

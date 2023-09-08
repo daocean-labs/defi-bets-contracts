@@ -6,11 +6,11 @@ interface INetworkConfig {
 export const networkConfig: INetworkConfig = {
   1133: {
     name: "dmcTestnet",
-    minDuration: 43200,
-    maxDuration: 604800,
+    minDuration: 86400,
+    maxDuration: 2592000,
     priceFeed: "0x",
     volatilityFeed: "0x",
-    timeDelta: 43200,
+    timeDelta: 86400,
     slot: parseEther("100"),
     decimalsIV: 4,
     initialAnswerIV: 2000,

@@ -42,6 +42,7 @@ const config: HardhatUserConfig = {
       // url: "http://127.0.0.1:20551/",
       accounts: [deployerPrivateKey],
       chainId: 1133,
+      gas: 30_000_000,
     },
   },
   namedAccounts: {

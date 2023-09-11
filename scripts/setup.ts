@@ -1,6 +1,6 @@
 import { deployments, ethers, network } from "hardhat";
 import { getNetworkIdFromName, networkConfig } from "../helper-hardhat-config";
-import { BaseContract } from "ethers";
+import { BaseContract, formatUnits, parseUnits } from "ethers";
 
 async function main() {
   const networkName = network.name;
@@ -34,27 +34,27 @@ async function main() {
     console.log(`Price Feed: ${priceFeed}`);
     console.log(`IV Feed: ${volaFeed}`);
     console.log(`DefiBets: ${defiBets}`);
-    // try {
-    //   const trxAddUnderlying = await managerContract.addUnderlyingToken(
-    //     underlyingName,
-    //     priceFeed,
-    //     defiBets
-    //   );
-    //   await trxAddUnderlying.wait(1);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+    try {
+      const trxAddUnderlying = await managerContract.addUnderlyingToken(
+        underlyingName,
+        priceFeed,
+        defiBets
+      );
+      await trxAddUnderlying.wait(1);
+    } catch (e) {
+      console.error(e);
+    }
 
-    // try {
-    //   const trxUpdateIVFeed = await managerContract.updateIVFeed(
-    //     hash,
-    //     volaFeed,
-    //     periodVola
-    //   );
-    //   await trxUpdateIVFeed.wait(1);
-    // } catch (e) {
-    //   console.error(e);
-    // }
+    try {
+      const trxUpdateIVFeed = await managerContract.updateIVFeed(
+        hash,
+        volaFeed,
+        periodVola
+      );
+      await trxUpdateIVFeed.wait(1);
+    } catch (e) {
+      console.error(e);
+    }
 
     console.log("Initialize the DefiBets Contract...");
 

@@ -1,5 +1,6 @@
 import { deployments, ethers, network } from "hardhat";
 import { getNetworkIdFromName, networkConfig } from "../helper-hardhat-config";
+import { BaseContract } from "ethers";
 
 async function main() {
   const networkName = network.name;

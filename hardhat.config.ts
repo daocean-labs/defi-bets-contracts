@@ -7,6 +7,11 @@ import "hardhat-preprocessor";
 import "hardhat-deploy";
 import { HardhatUserConfig } from "hardhat/config";
 
+import "./tasks/set-price";
+import "./tasks/start-season";
+import "./tasks/activate-account";
+import "./tasks/set-vola";
+
 function getRemappings() {
   return fs
     .readFileSync("remappings.txt", "utf8")

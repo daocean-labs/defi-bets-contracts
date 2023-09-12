@@ -26,6 +26,7 @@ async function main() {
     const priceFeed = (await deployments.get("BTCPriceOracle")).address;
     const defiBets = (await deployments.get("DefiBets")).address;
     const volaFeed = (await deployments.get("ImpliedVolatilityOracle")).address;
+    const pointTracker = (await deployments.get("PointTracker")).address;
 
     const hash = await managerContract.getUnderlyingByte("BTC");
 
@@ -52,6 +53,15 @@ async function main() {
         periodVola
       );
       await trxUpdateIVFeed.wait(1);
+    } catch (e) {
+      console.error(e);
+    }
+
+    try {
+      const trxSetPointTracker = await managerContract.setPointTracker(
+        pointTracker
+      );
+      await trxSetPointTracker.wait();
     } catch (e) {
       console.error(e);
     }

@@ -12,12 +12,12 @@ contract DefiBetsTest is Test {
 
     uint256 public constant STARTING_USER_BALANCE = 10 ether;
 
-    string underlying;
-    uint256 timeDelta;
+    string underlying = "BTC";
+    uint256 timeDelta = 1 days;
     uint256 dependentTimeStamp;
-    uint256 minBetDuration;
-    uint256 maxBetDuration;
-    uint256 slot;
+    uint256 minBetDuration = 1 days;
+    uint256 maxBetDuration = 7 days;
+    uint256 slot = 100e18;
 
     //Settings for bets
     uint256 public constant BET_SIZE = 100;
@@ -27,6 +27,8 @@ contract DefiBetsTest is Test {
 
     function setUp() external {
         defiBets = new DefiBets(underlying, MANAGER, timeDelta);
+
+        dependentTimeStamp = block.timestamp;
 
         vm.deal(PLAYER, STARTING_USER_BALANCE);
         vm.deal(MANAGER, STARTING_USER_BALANCE);

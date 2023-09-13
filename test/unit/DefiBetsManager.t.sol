@@ -40,7 +40,8 @@ contract DefiBetsManagerTest is Test {
 
         defiBets = new DefiBets(underlying,address(manager),timeDelta);
         priceOracle = new BTCPriceOracle(PRICE_ORACLE_DECIMALS,PRICE_ORACLE_DESCRIPTION,1,underlying);
-        volaOracle = new ImpliedVolatilityOracle(VOLA_ORACLE_DECIMALS,VOLA_ORACLE_DESCRIPTION,1,underlying,VOLA_ORACLE_PERIOD);
+        volaOracle =
+            new ImpliedVolatilityOracle(VOLA_ORACLE_DECIMALS,VOLA_ORACLE_DESCRIPTION,1,underlying,VOLA_ORACLE_PERIOD);
 
         underlyingByte = manager.getUnderlyingByte(underlying);
         vm.stopPrank();
@@ -56,7 +57,7 @@ contract DefiBetsManagerTest is Test {
         //Arrange
 
         vm.prank(OWNER);
-        
+
         //Act
         manager.addUnderlyingToken(underlying, address(priceOracle), address(defiBets));
 
@@ -69,24 +70,27 @@ contract DefiBetsManagerTest is Test {
     // calculateWinning    //
     /////////////////////////
 
-    modifier underlyingAndOraclesAdded(){
+    modifier underlyingAndOraclesAdded() {
         vm.startPrank(OWNER);
-        manager.addUnderlyingToken(underlying,address(priceOracle),address(defiBets));
-        manager.updateIVFeed(underlyingByte,address(volaOracle),VOLA_ORACLE_PERIOD);
+        manager.addUnderlyingToken(underlying, address(priceOracle), address(defiBets));
+        manager.updateIVFeed(underlyingByte, address(volaOracle), VOLA_ORACLE_PERIOD);
         volaOracle.updateAnswer(int256(underlyingVola));
         vm.stopPrank();
         _;
     }
 
     function testCalculateWinningIsCorrect() external underlyingAndOraclesAdded {
-        //Arrange 
+        //Arrange
         uint256 _expTime = block.timestamp + 4 days;
 
-        uint256 probability = MathLibraryDefibets.calculateProbabilityRange(minPrice,maxPrice,underlyingPrice,underlyingVola,VOLA_ORACLE_PERIOD,_expTime-block.timestamp);
-        console.log("The probability:",probability);
+        uint256 probability = MathLibraryDefibets.calculateProbabilityRange(
+            minPrice, maxPrice, underlyingPrice, underlyingVola, VOLA_ORACLE_PERIOD, _expTime - block.timestamp
+        );
+        console.log("The probability:", probability);
 
-        uint256 winning = manager.calculateWinning(underlyingPrice,betSize,minPrice,maxPrice,_expTime,underlyingByte);
+        uint256 winning =
+            manager.calculateWinning(underlyingPrice, betSize, minPrice, maxPrice, _expTime, underlyingByte);
 
-        console.log("The winning is",winning);
+        console.log("The winning is", winning);
     }
 }

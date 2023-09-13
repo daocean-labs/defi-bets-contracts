@@ -38,7 +38,7 @@ contract PointTracker is Ownable {
 
     /* === Modifier === */
     modifier seasonIsActive() {
-        if (seasonActive == false) {
+        if (seasonActive == false ) {
             revert PointTracker__SeasonIsNotActive();
         }
 
@@ -151,5 +151,9 @@ contract PointTracker is Ownable {
 
     function getSeasonEndDate() external view returns (uint256) {
         return endOfSeason;
+    }
+
+    function isAccountActive(uint256 _season,address _player) public view returns(bool){
+        return isActivated[_season][_player];
     }
 }

@@ -21,6 +21,7 @@ error DefiBetsManager__ParamNull();
 error DefiBetsManager__NotValidRoundId();
 error DefiBetsManager__AccessForbidden();
 error DefiBetsManager__ExpTimeNotValid();
+error DefiBetsManager__NoPointTrackerSet();
 
 /**
  * @title DefiBets Manager Contract
@@ -73,6 +74,7 @@ contract DefiBetsManager is Pausable, Ownable {
     {
         bytes32 _hash = getUnderlyingByte(_underlying);
         _isValidUnderlying(_hash);
+        _isPointTrackerSet();
 
         if (_expTime > IPointTracker(pointTracker).getSeasonEndDate()) {
             revert DefiBetsManager__ExpTimeNotValid();
@@ -97,6 +99,7 @@ contract DefiBetsManager is Pausable, Ownable {
      * @param _hash The hash of the underlying asset for the bet.
      */
     function claimWinnings(uint256 _tokenId, bytes32 _hash) external whenNotPaused {
+        _isPointTrackerSet();
         address _defiBets = defiBetsContracts[_hash];
 
         (uint256 _tokenAmount, bool _profit) = IDefiBets(_defiBets).claimForAccount(msg.sender, _tokenId);
@@ -245,12 +248,21 @@ contract DefiBetsManager is Pausable, Ownable {
         return (_value).mul(MULTIPLIER).div(_probability);
     }
 
+    function _isPointTrackerSet() internal view {
+        if (pointTracker == address(0)) {
+            revert DefiBetsManager__NoPointTrackerSet();
+        }
+    }
+
     /* ====== Pure/View Functions ====== */
 
     function getCurrPrice(bytes32 _hash) public view returns (uint256) {
         uint256 price;
 
         address _priceFeed = underlyingPriceFeeds[_hash];
+        if(_priceFeed == address(0)){
+            return 0;
+        }
 
         (, int256 answer,,,) = AggregatorV3Interface(_priceFeed).latestRoundData();
 
@@ -293,12 +305,17 @@ contract DefiBetsManager is Pausable, Ownable {
         uint256 _expTime,
         bytes32 _hash
     ) public view returns (uint256) {
+        uint256 vola = getImplVol(_hash);
+        if (vola == 0) {
+            return 0;
+        }
+
         //Probabiliy per 10000
         uint256 probability = MathLibraryDefibets.calculateProbabilityRange(
             _minPrice,
             _maxPrice,
             _price, /* current price BTC */
-            getImplVol(_hash),
+            vola,
             underlyingIVFeeds[_hash].period,
             (_expTime.sub(block.timestamp))
         ); /* days untill expiry * 10000 */
@@ -313,6 +330,11 @@ contract DefiBetsManager is Pausable, Ownable {
     }
 
     function getImplVol(bytes32 _hash) public view returns (uint256) {
+        address volaFeed = underlyingIVFeeds[_hash].feedAddress;
+        if (volaFeed == address(0)) {
+            return 0;
+        }
+
         (, int256 answer,,,) = AggregatorV3Interface(underlyingIVFeeds[_hash].feedAddress).latestRoundData();
 
         return uint256(answer);

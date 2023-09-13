@@ -46,11 +46,16 @@ contract DefiBetsTest is Test {
 
     function testSetBetForAccountIsCalculating() external isInitialized {
         //Arrange
-
+        uint256 expTimeAdds = 3;
+        vm.startPrank(MANAGER);
+        for(uint256 i = 0;i < expTimeAdds;i++){
+            defiBets.initializeNewExpTime();
+        }
         uint256 expTime = defiBets.timeDelta() * 3 + dependentTimeStamp;
-        vm.prank(MANAGER);
+        vm.stopPrank();
 
         //Act
+        vm.prank(MANAGER);
         defiBets.setBetForAccount(PLAYER, BET_SIZE, MIN_PRICE, MAX_PRICE, expTime, WINNING);
         DefiBets.Bet memory bet = defiBets.getBetData(1);
 

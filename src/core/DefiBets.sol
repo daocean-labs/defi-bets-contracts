@@ -309,15 +309,11 @@ contract DefiBets is Ownable, IDefiBets {
     }
 
     function _initializeExpTimes() internal {
-        uint256 _timeSteps = (maxBetDuration.sub(minBetDuration)).div(timeDelta);
+        uint256 _expTime = dependentTimeStamp;
 
-        for (uint256 i = 0; i < _timeSteps; i++) {
-            uint256 _expTime = dependentTimeStamp.add(timeDelta.mul(i));
+        _initExpTime(_expTime);
 
-            _initExpTime(_expTime);
-        }
-
-        lastActiveExpTime = dependentTimeStamp.add(timeDelta.mul(_timeSteps.sub(1)));
+        lastActiveExpTime = dependentTimeStamp;
     }
 
     function _initExpTime(uint256 _expTime) internal {

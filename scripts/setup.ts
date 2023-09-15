@@ -35,6 +35,7 @@ async function main() {
     console.log(`Price Feed: ${priceFeed}`);
     console.log(`IV Feed: ${volaFeed}`);
     console.log(`DefiBets: ${defiBets}`);
+
     try {
       const trxAddUnderlying = await managerContract.addUnderlyingToken(
         underlyingName,
@@ -58,9 +59,13 @@ async function main() {
     }
 
     try {
-      const trxSetPointTracker = await managerContract.setPointTracker(
-        pointTracker
-      );
+      const func = managerContract.getFunction("setPointTracker");
+
+      const gas = await func.estimateGas(pointTracker);
+
+      const trxSetPointTracker = await func.send(pointTracker, {
+        gasLimit: (gas * BigInt(120)) / BigInt(100),
+      });
       await trxSetPointTracker.wait();
     } catch (e) {
       console.error(e);

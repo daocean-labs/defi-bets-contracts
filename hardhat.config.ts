@@ -43,7 +43,8 @@ const config: HardhatUserConfig = {
     // If the network you are looking for is not here you can add new network settings
 
     dmcTestnet: {
-      url: "https://testnet-dmc.mydefichain.com:20551/",
+      // url: "https://testnet-dmc.mydefichain.com:20551/",
+      url: "https://changinode1.defiserver.de/",
       //url: "https://changi.dfi.team/",
       // url: "http://127.0.0.1:20551/",
       accounts: [deployerPrivateKey],

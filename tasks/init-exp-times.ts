@@ -41,7 +41,11 @@ task("init-exp-times", "Initialize all possible exp times ").setAction(
         if (info.init != true) {
           console.log(`Create new exp time...`);
           try {
-            const trx = await manager.createNewExpTime(underlyingByte);
+            const func = manager.getFunction("createNewExpTime");
+            const estimateGas = await func.estimateGas(underlyingByte);
+            const trx = await func.send(underlyingByte, {
+              gasLimit: (estimateGas * BigInt(120)) / BigInt(100),
+            });
             await trx.wait();
           } catch (e) {
             console.error(e);

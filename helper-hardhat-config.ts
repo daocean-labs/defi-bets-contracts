@@ -34,6 +34,21 @@ export const networkConfig: INetworkConfig = {
     initialAnswerPrice: parseEther("29000"),
     confirmations: 2,
   },
+  80001: {
+    name: "mumbai",
+    minDuration: 86400,
+    maxDuration: 2592000,
+    priceFeed: "0x",
+    volatilityFeed: "0x",
+    timeDelta: 86400,
+    slot: parseEther("100"),
+    decimalsIV: 4,
+    initialAnswerIV: 2000,
+    periodIV: 30 * 60 * 60 * 24,
+    decimalsPriceFeed: 18,
+    initialAnswerPrice: parseEther("29000"),
+    confirmations: 6,
+  },
 };
 
 export const developmentChains = ["hardhat", "localhost"];

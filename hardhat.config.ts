@@ -28,6 +28,8 @@ const deployerPrivateKey =
   process.env.DEPLOYER_PRIVATE_KEY ??
   "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
 
+const polygonScanApiKey = process.env.POLYGON_SCAN_API_KEY || "";
+
 const config: HardhatUserConfig = {
   solidity: {
     version: "0.8.19",
@@ -51,6 +53,11 @@ const config: HardhatUserConfig = {
       chainId: 1133,
       gas: 30_000_000,
     },
+    mumbai: {
+      url: `https://polygon-mumbai.g.alchemy.com/v2/${providerApiKey}`,
+      accounts: [deployerPrivateKey],
+      chainId: 80001,
+    },
   },
   namedAccounts: {
     deployer: {
@@ -61,6 +68,7 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       dmcTestnet: " ",
+      polygonMumbai: polygonScanApiKey,
     },
     customChains: [
       {

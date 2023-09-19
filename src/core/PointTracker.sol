@@ -15,7 +15,7 @@ contract PointTracker is Ownable {
     error PointTracker__NotEndOfSeasonReached();
     error PointTracker__NotEnoughPoints();
 
-    uint256 public constant MINIMUM_DFI_AMOUNT = 10 ether;
+    uint256 public constant MINIMUM_DFI_AMOUNT = 0.1 ether;
     uint256 public constant STARTING_POINTS = 100;
 
     /* === State Varibales === */

@@ -4,301 +4,6 @@
       "name": "dmcTestnet",
       "chainId": "1133",
       "contracts": {
-        "ImpliedVolatilityOracle": {
-          "address": "0xE815f2aD238B218E6becb93d846EA8FF90eDB39C",
-          "abi": [
-            {
-              "inputs": [
-                {
-                  "internalType": "uint8",
-                  "name": "_decimals",
-                  "type": "uint8"
-                },
-                {
-                  "internalType": "string",
-                  "name": "_description",
-                  "type": "string"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_version",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "string",
-                  "name": "_underlying",
-                  "type": "string"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_period",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "nonpayable",
-              "type": "constructor"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "previousOwner",
-                  "type": "address"
-                },
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "OwnershipTransferred",
-              "type": "event"
-            },
-            {
-              "inputs": [],
-              "name": "decimals",
-              "outputs": [
-                {
-                  "internalType": "uint8",
-                  "name": "",
-                  "type": "uint8"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "description",
-              "outputs": [
-                {
-                  "internalType": "string",
-                  "name": "",
-                  "type": "string"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint80",
-                  "name": "",
-                  "type": "uint80"
-                }
-              ],
-              "name": "getAnswer",
-              "outputs": [
-                {
-                  "internalType": "int256",
-                  "name": "",
-                  "type": "int256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint80",
-                  "name": "_roundId",
-                  "type": "uint80"
-                }
-              ],
-              "name": "getRoundData",
-              "outputs": [
-                {
-                  "internalType": "uint80",
-                  "name": "roundId",
-                  "type": "uint80"
-                },
-                {
-                  "internalType": "int256",
-                  "name": "answer",
-                  "type": "int256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "startedAt",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "updatedAt",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint80",
-                  "name": "answeredInRound",
-                  "type": "uint80"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint80",
-                  "name": "",
-                  "type": "uint80"
-                }
-              ],
-              "name": "getStartedAt",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint80",
-                  "name": "",
-                  "type": "uint80"
-                }
-              ],
-              "name": "getTimestamp",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "latestRoundData",
-              "outputs": [
-                {
-                  "internalType": "uint80",
-                  "name": "roundId",
-                  "type": "uint80"
-                },
-                {
-                  "internalType": "int256",
-                  "name": "answer",
-                  "type": "int256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "startedAt",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "updatedAt",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint80",
-                  "name": "answeredInRound",
-                  "type": "uint80"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "owner",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "period",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "renounceOwnership",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "transferOwnership",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "underlying",
-              "outputs": [
-                {
-                  "internalType": "string",
-                  "name": "",
-                  "type": "string"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "int256",
-                  "name": "_answer",
-                  "type": "int256"
-                }
-              ],
-              "name": "updateAnswer",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "version",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            }
-          ]
-        },
         "BTCPriceOracle": {
           "address": "0x4b70067647465d6d797286168661189044D5EA9a",
           "abi": [
@@ -569,774 +274,6 @@
                   "internalType": "uint256",
                   "name": "",
                   "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            }
-          ]
-        },
-        "MathLibraryDefibets": {
-          "address": "0xE762d0F235DeB2d83d2F10A9c03B5FB1fbC2fc03",
-          "abi": [
-            {
-              "inputs": [],
-              "name": "MathLibraryDefibets__WrongParameter",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "BILLION",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "Z_TABLE_MAX",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "lowerPrice",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "upperPrice",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "currPrice",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "impliedVolatility",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "impliedVolatilityTime",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "timeUntilEpxiry",
-                  "type": "uint256"
-                }
-              ],
-              "name": "calculateProbabilityRange",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "pure",
-              "type": "function"
-            }
-          ]
-        },
-        "DefiBetsManager": {
-          "address": "0x235234291698c6971e29a5D866dC95F7a66e5f8c",
-          "abi": [
-            {
-              "inputs": [],
-              "stateMutability": "nonpayable",
-              "type": "constructor"
-            },
-            {
-              "inputs": [],
-              "name": "DefiBetsManager__ExpTimeNotValid",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "DefiBetsManager__NoPointTrackerSet",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "DefiBetsManager__NoValidUnderlying",
-              "type": "error"
-            },
-            {
-              "inputs": [],
-              "name": "DefiBetsManager__NotValidRoundId",
-              "type": "error"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "feePpm",
-                  "type": "uint256"
-                }
-              ],
-              "name": "FeeUpdated",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "bytes32",
-                  "name": "underlying",
-                  "type": "bytes32"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "feed",
-                  "type": "address"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "period",
-                  "type": "uint256"
-                }
-              ],
-              "name": "IVFeedUpdated",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "previousOwner",
-                  "type": "address"
-                },
-                {
-                  "indexed": true,
-                  "internalType": "address",
-                  "name": "newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "OwnershipTransferred",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "Paused",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "uint256",
-                  "name": "payoutFactor",
-                  "type": "uint256"
-                }
-              ],
-              "name": "PayoutFactorUpdated",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "bytes32",
-                  "name": "underlying",
-                  "type": "bytes32"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "priceFeed",
-                  "type": "address"
-                }
-              ],
-              "name": "PriceFeedUpdated",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "string",
-                  "name": "underlying",
-                  "type": "string"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "bytes32",
-                  "name": "underlyingHash",
-                  "type": "bytes32"
-                },
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "defiBets",
-                  "type": "address"
-                }
-              ],
-              "name": "UnderlyingAdded",
-              "type": "event"
-            },
-            {
-              "anonymous": false,
-              "inputs": [
-                {
-                  "indexed": false,
-                  "internalType": "address",
-                  "name": "account",
-                  "type": "address"
-                }
-              ],
-              "name": "Unpaused",
-              "type": "event"
-            },
-            {
-              "inputs": [],
-              "name": "MULTIPLIER",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "string",
-                  "name": "_underlying",
-                  "type": "string"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_feed",
-                  "type": "address"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_defiBets",
-                  "type": "address"
-                }
-              ],
-              "name": "addUnderlyingToken",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "_price",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_betSize",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_minPrice",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_maxPrice",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_expTime",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bytes32",
-                  "name": "_hash",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "calculateWinning",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "_tokenId",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bytes32",
-                  "name": "_hash",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "claimWinnings",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "_tokenHash",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "createNewExpTime",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "defiBetsContracts",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "_expTime",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "string",
-                  "name": "_underlying",
-                  "type": "string"
-                },
-                {
-                  "internalType": "uint80",
-                  "name": "_roundId",
-                  "type": "uint80"
-                }
-              ],
-              "name": "executeExpiration",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "_hash",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "getCurrPrice",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "_hash",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "getImplVol",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "_hash",
-                  "type": "bytes32"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_expTime",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint80",
-                  "name": "_roundId",
-                  "type": "uint80"
-                }
-              ],
-              "name": "getPrice",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "string",
-                  "name": "_token",
-                  "type": "string"
-                }
-              ],
-              "name": "getUnderlyingByte",
-              "outputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "",
-                  "type": "bytes32"
-                }
-              ],
-              "stateMutability": "pure",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "_hash",
-                  "type": "bytes32"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_startExpTime",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_minBetDuration",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_maxBetDuration",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_slot",
-                  "type": "uint256"
-                }
-              ],
-              "name": "initializeBets",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "owner",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "paused",
-              "outputs": [
-                {
-                  "internalType": "bool",
-                  "name": "",
-                  "type": "bool"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "pointTracker",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
-              "name": "renounceOwnership",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "_betSize",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_minPrice",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_maxPrice",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_expTime",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "string",
-                  "name": "_underlying",
-                  "type": "string"
-                }
-              ],
-              "name": "setBet",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "_minBetDuration",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_maxBetDuration",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_slot",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_timeDelta",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_dependentTimeStamp",
-                  "type": "uint256"
-                },
-                {
-                  "internalType": "bytes32",
-                  "name": "_hash",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "setDefiBetsParameter",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "_pointTracker",
-                  "type": "address"
-                }
-              ],
-              "name": "setPointTracker",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "newOwner",
-                  "type": "address"
-                }
-              ],
-              "name": "transferOwnership",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "underlyingIVFeeds",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "feedAddress",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "period",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "underlyingPriceFeeds",
-              "outputs": [
-                {
-                  "internalType": "address",
-                  "name": "",
-                  "type": "address"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "_hash",
-                  "type": "bytes32"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_feed",
-                  "type": "address"
-                },
-                {
-                  "internalType": "uint256",
-                  "name": "_period",
-                  "type": "uint256"
-                }
-              ],
-              "name": "updateIVFeed",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "_hash",
-                  "type": "bytes32"
-                },
-                {
-                  "internalType": "address",
-                  "name": "_feed",
-                  "type": "address"
-                }
-              ],
-              "name": "updatePriceFeed",
-              "outputs": [],
-              "stateMutability": "nonpayable",
-              "type": "function"
-            },
-            {
-              "inputs": [
-                {
-                  "internalType": "bytes32",
-                  "name": "",
-                  "type": "bytes32"
-                }
-              ],
-              "name": "validUnderlying",
-              "outputs": [
-                {
-                  "internalType": "bool",
-                  "name": "",
-                  "type": "bool"
                 }
               ],
               "stateMutability": "view",
@@ -2054,6 +991,1069 @@
                 }
               ],
               "stateMutability": "view",
+              "type": "function"
+            }
+          ]
+        },
+        "DefiBetsManager": {
+          "address": "0x235234291698c6971e29a5D866dC95F7a66e5f8c",
+          "abi": [
+            {
+              "inputs": [],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBetsManager__ExpTimeNotValid",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBetsManager__NoPointTrackerSet",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBetsManager__NoValidUnderlying",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBetsManager__NotValidRoundId",
+              "type": "error"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "feePpm",
+                  "type": "uint256"
+                }
+              ],
+              "name": "FeeUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "bytes32",
+                  "name": "underlying",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "feed",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "period",
+                  "type": "uint256"
+                }
+              ],
+              "name": "IVFeedUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "account",
+                  "type": "address"
+                }
+              ],
+              "name": "Paused",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "payoutFactor",
+                  "type": "uint256"
+                }
+              ],
+              "name": "PayoutFactorUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "bytes32",
+                  "name": "underlying",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "priceFeed",
+                  "type": "address"
+                }
+              ],
+              "name": "PriceFeedUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "string",
+                  "name": "underlying",
+                  "type": "string"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "bytes32",
+                  "name": "underlyingHash",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "defiBets",
+                  "type": "address"
+                }
+              ],
+              "name": "UnderlyingAdded",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "account",
+                  "type": "address"
+                }
+              ],
+              "name": "Unpaused",
+              "type": "event"
+            },
+            {
+              "inputs": [],
+              "name": "MULTIPLIER",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_feed",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_defiBets",
+                  "type": "address"
+                }
+              ],
+              "name": "addUnderlyingToken",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_price",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_betSize",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_minPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "calculateWinning",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_tokenId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "claimWinnings",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_tokenHash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "createNewExpTime",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "defiBetsContracts",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "_roundId",
+                  "type": "uint80"
+                }
+              ],
+              "name": "executeExpiration",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "getCurrPrice",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "getImplVol",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "_roundId",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getPrice",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "_token",
+                  "type": "string"
+                }
+              ],
+              "name": "getUnderlyingByte",
+              "outputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "stateMutability": "pure",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_startExpTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_minBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_slot",
+                  "type": "uint256"
+                }
+              ],
+              "name": "initializeBets",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "paused",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "pointTracker",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "renounceOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_betSize",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_minPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                }
+              ],
+              "name": "setBet",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_minBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_slot",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_timeDelta",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_dependentTimeStamp",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "setDefiBetsParameter",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_pointTracker",
+                  "type": "address"
+                }
+              ],
+              "name": "setPointTracker",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "underlyingIVFeeds",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "feedAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "period",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "underlyingPriceFeeds",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_feed",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_period",
+                  "type": "uint256"
+                }
+              ],
+              "name": "updateIVFeed",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_feed",
+                  "type": "address"
+                }
+              ],
+              "name": "updatePriceFeed",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "validUnderlying",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ]
+        },
+        "ImpliedVolatilityOracle": {
+          "address": "0xE815f2aD238B218E6becb93d846EA8FF90eDB39C",
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "uint8",
+                  "name": "_decimals",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_description",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_version",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_period",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "inputs": [],
+              "name": "decimals",
+              "outputs": [
+                {
+                  "internalType": "uint8",
+                  "name": "",
+                  "type": "uint8"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "description",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getAnswer",
+              "outputs": [
+                {
+                  "internalType": "int256",
+                  "name": "",
+                  "type": "int256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "_roundId",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getRoundData",
+              "outputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "roundId",
+                  "type": "uint80"
+                },
+                {
+                  "internalType": "int256",
+                  "name": "answer",
+                  "type": "int256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "updatedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "answeredInRound",
+                  "type": "uint80"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getStartedAt",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getTimestamp",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "latestRoundData",
+              "outputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "roundId",
+                  "type": "uint80"
+                },
+                {
+                  "internalType": "int256",
+                  "name": "answer",
+                  "type": "int256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "updatedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "answeredInRound",
+                  "type": "uint80"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "period",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "renounceOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "underlying",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "int256",
+                  "name": "_answer",
+                  "type": "int256"
+                }
+              ],
+              "name": "updateAnswer",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "version",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ]
+        },
+        "MathLibraryDefibets": {
+          "address": "0xE762d0F235DeB2d83d2F10A9c03B5FB1fbC2fc03",
+          "abi": [
+            {
+              "inputs": [],
+              "name": "MathLibraryDefibets__WrongParameter",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "BILLION",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "Z_TABLE_MAX",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "lowerPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "upperPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "currPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "impliedVolatility",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "impliedVolatilityTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "timeUntilEpxiry",
+                  "type": "uint256"
+                }
+              ],
+              "name": "calculateProbabilityRange",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "pure",
               "type": "function"
             }
           ]
@@ -4506,6 +4506,2452 @@
         },
         "PointTracker": {
           "address": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_manager",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "inputs": [],
+              "name": "PointTracker__AccessForbidden",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "PointTracker__AccountAlreadyActivated",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "PointTracker__AccountNotEligible",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "PointTracker__NotEndOfSeasonReached",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "PointTracker__NotEnoughPoints",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "PointTracker__PlayerNotActive",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "PointTracker__SeasonIsActive",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "PointTracker__SeasonIsNotActive",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "PointTracker__SeasonOutOfBounds",
+              "type": "error"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "player",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "season",
+                  "type": "uint256"
+                }
+              ],
+              "name": "AccountActivation",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "player",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "pointsAdded",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newScore",
+                  "type": "uint256"
+                }
+              ],
+              "name": "PointsAdded",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "player",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "pointsRemoved",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "newScore",
+                  "type": "uint256"
+                }
+              ],
+              "name": "PointsRemoved",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "season",
+                  "type": "uint256"
+                }
+              ],
+              "name": "SeasonFinished",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "season",
+                  "type": "uint256"
+                }
+              ],
+              "name": "SeasonStarted",
+              "type": "event"
+            },
+            {
+              "inputs": [],
+              "name": "MINIMUM_DFI_AMOUNT",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "STARTING_POINTS",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "activateAccount",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_player",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_points",
+                  "type": "uint256"
+                }
+              ],
+              "name": "addPointsForPlayer",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "finishSeason",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getLatestSeason",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getManager",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_season",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_player",
+                  "type": "address"
+                }
+              ],
+              "name": "getPlayerPoints",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getSeasonEndDate",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_season",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_player",
+                  "type": "address"
+                }
+              ],
+              "name": "isAccountActive",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_player",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_points",
+                  "type": "uint256"
+                }
+              ],
+              "name": "reducePointsForPlayer",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "renounceOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_endOfSeason",
+                  "type": "uint256"
+                }
+              ],
+              "name": "startSeason",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "80001": [
+    {
+      "name": "mumbai",
+      "chainId": "80001",
+      "contracts": {
+        "BTCPriceOracle": {
+          "address": "0xC751D1894ad861706fae9E4d3749b6C75e9caDbB",
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "uint8",
+                  "name": "_decimals",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_description",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_version",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "inputs": [],
+              "name": "decimals",
+              "outputs": [
+                {
+                  "internalType": "uint8",
+                  "name": "",
+                  "type": "uint8"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "description",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getAnswer",
+              "outputs": [
+                {
+                  "internalType": "int256",
+                  "name": "",
+                  "type": "int256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "_roundId",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getRoundData",
+              "outputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "roundId",
+                  "type": "uint80"
+                },
+                {
+                  "internalType": "int256",
+                  "name": "answer",
+                  "type": "int256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "updatedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "answeredInRound",
+                  "type": "uint80"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getStartedAt",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getTimestamp",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "latestRoundData",
+              "outputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "roundId",
+                  "type": "uint80"
+                },
+                {
+                  "internalType": "int256",
+                  "name": "answer",
+                  "type": "int256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "updatedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "answeredInRound",
+                  "type": "uint80"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "renounceOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "underlying",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "int256",
+                  "name": "_answer",
+                  "type": "int256"
+                }
+              ],
+              "name": "updateAnswer",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "version",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ]
+        },
+        "DefiBets": {
+          "address": "0x08EeEd9771Eb4695cA367B1CC6dd48D63E555F2c",
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_defiBetsManager",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_timeDelta",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets_NoValidParamters",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__AlreadyClaimed",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__AlreadyInitialized",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__Forbidden",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__NoValidExpTime",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__NoValidPrice",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__NoValidWinningPrice",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__NotActive",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__NotEpxired",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__NotExecutableTime",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__NotTheTokenOwner",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__OutOfActiveExpTimeRange",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__ParameterNotInitialized",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBets__TokenDontExists",
+              "type": "error"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "minBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "maxBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "slot",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "timeDelta",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "dependentTimeStamp",
+                  "type": "uint256"
+                }
+              ],
+              "name": "BetParameterUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "account",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "betSize",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "profit",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "expDate",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "minPrice",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "maxPrice",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "betID",
+                  "type": "uint256"
+                }
+              ],
+              "name": "BetPlaced",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "account",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "betID",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "bool",
+                  "name": "profit",
+                  "type": "bool"
+                }
+              ],
+              "name": "Claimed",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "expTime",
+                  "type": "uint256"
+                }
+              ],
+              "name": "EpxirationTimeCreated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "uint256",
+                  "name": "expTime",
+                  "type": "uint256"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "expPrice",
+                  "type": "uint256"
+                }
+              ],
+              "name": "Expiration",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "inputs": [],
+              "name": "betIDs",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_value",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "betsWinningSlots",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_account",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_betID",
+                  "type": "uint256"
+                }
+              ],
+              "name": "claimForAccount",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "defiBetsManager",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "name": "expTimeInfos",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "expPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "slotSize",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "finished",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "init",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_betID",
+                  "type": "uint256"
+                }
+              ],
+              "name": "getBetData",
+              "outputs": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "account",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "expTime",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "betSize",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "profit",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "minPrice",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "maxPrice",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "bool",
+                      "name": "claimed",
+                      "type": "bool"
+                    }
+                  ],
+                  "internalType": "struct DefiBets.Bet",
+                  "name": "",
+                  "type": "tuple"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "getDependentExpTime",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_dependentTimeStamp",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_minBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_slot",
+                  "type": "uint256"
+                }
+              ],
+              "name": "initializeData",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "initializeNewExpTime",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "isActive",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "lastActiveExpTime",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "maxBetDuration",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "minBetDuration",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_betID",
+                  "type": "uint256"
+                }
+              ],
+              "name": "ownerOf",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_expPrice",
+                  "type": "uint256"
+                }
+              ],
+              "name": "performExpiration",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "renounceOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_account",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_betSize",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_minPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_winning",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setBetForAccount",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_minBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_slot",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_timeDelta",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_dependentTimeStamp",
+                  "type": "uint256"
+                }
+              ],
+              "name": "setBetParamater",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "slot",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "stop",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "timeDelta",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "underlying",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ]
+        },
+        "DefiBetsManager": {
+          "address": "0xBc4aE6aacBA1b080C9B1E89fF4C120E15602bE7a",
+          "abi": [
+            {
+              "inputs": [],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBetsManager__ExpTimeNotValid",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBetsManager__NoPointTrackerSet",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBetsManager__NoValidUnderlying",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "DefiBetsManager__NotValidRoundId",
+              "type": "error"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "feePpm",
+                  "type": "uint256"
+                }
+              ],
+              "name": "FeeUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "bytes32",
+                  "name": "underlying",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "feed",
+                  "type": "address"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "period",
+                  "type": "uint256"
+                }
+              ],
+              "name": "IVFeedUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "account",
+                  "type": "address"
+                }
+              ],
+              "name": "Paused",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "uint256",
+                  "name": "payoutFactor",
+                  "type": "uint256"
+                }
+              ],
+              "name": "PayoutFactorUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "bytes32",
+                  "name": "underlying",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "priceFeed",
+                  "type": "address"
+                }
+              ],
+              "name": "PriceFeedUpdated",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "string",
+                  "name": "underlying",
+                  "type": "string"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "bytes32",
+                  "name": "underlyingHash",
+                  "type": "bytes32"
+                },
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "defiBets",
+                  "type": "address"
+                }
+              ],
+              "name": "UnderlyingAdded",
+              "type": "event"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": false,
+                  "internalType": "address",
+                  "name": "account",
+                  "type": "address"
+                }
+              ],
+              "name": "Unpaused",
+              "type": "event"
+            },
+            {
+              "inputs": [],
+              "name": "MULTIPLIER",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_feed",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_defiBets",
+                  "type": "address"
+                }
+              ],
+              "name": "addUnderlyingToken",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_price",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_betSize",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_minPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "calculateWinning",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_tokenId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "claimWinnings",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_tokenHash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "createNewExpTime",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "defiBetsContracts",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "_roundId",
+                  "type": "uint80"
+                }
+              ],
+              "name": "executeExpiration",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "getCurrPrice",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "getImplVol",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "_roundId",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getPrice",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "string",
+                  "name": "_token",
+                  "type": "string"
+                }
+              ],
+              "name": "getUnderlyingByte",
+              "outputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "stateMutability": "pure",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_startExpTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_minBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_slot",
+                  "type": "uint256"
+                }
+              ],
+              "name": "initializeBets",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "paused",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "pointTracker",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "renounceOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_betSize",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_minPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_expTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                }
+              ],
+              "name": "setBet",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "_minBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_maxBetDuration",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_slot",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_timeDelta",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_dependentTimeStamp",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "setDefiBetsParameter",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "_pointTracker",
+                  "type": "address"
+                }
+              ],
+              "name": "setPointTracker",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "underlyingIVFeeds",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "feedAddress",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "period",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "underlyingPriceFeeds",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_feed",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_period",
+                  "type": "uint256"
+                }
+              ],
+              "name": "updateIVFeed",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "_hash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "_feed",
+                  "type": "address"
+                }
+              ],
+              "name": "updatePriceFeed",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "bytes32",
+                  "name": "",
+                  "type": "bytes32"
+                }
+              ],
+              "name": "validUnderlying",
+              "outputs": [
+                {
+                  "internalType": "bool",
+                  "name": "",
+                  "type": "bool"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ]
+        },
+        "ImpliedVolatilityOracle": {
+          "address": "0x250225638111295CFF7898Fd6711FF308307B4EA",
+          "abi": [
+            {
+              "inputs": [
+                {
+                  "internalType": "uint8",
+                  "name": "_decimals",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_description",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_version",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "string",
+                  "name": "_underlying",
+                  "type": "string"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "_period",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "nonpayable",
+              "type": "constructor"
+            },
+            {
+              "anonymous": false,
+              "inputs": [
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "previousOwner",
+                  "type": "address"
+                },
+                {
+                  "indexed": true,
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "OwnershipTransferred",
+              "type": "event"
+            },
+            {
+              "inputs": [],
+              "name": "decimals",
+              "outputs": [
+                {
+                  "internalType": "uint8",
+                  "name": "",
+                  "type": "uint8"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "description",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getAnswer",
+              "outputs": [
+                {
+                  "internalType": "int256",
+                  "name": "",
+                  "type": "int256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "_roundId",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getRoundData",
+              "outputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "roundId",
+                  "type": "uint80"
+                },
+                {
+                  "internalType": "int256",
+                  "name": "answer",
+                  "type": "int256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "updatedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "answeredInRound",
+                  "type": "uint80"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getStartedAt",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "",
+                  "type": "uint80"
+                }
+              ],
+              "name": "getTimestamp",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "latestRoundData",
+              "outputs": [
+                {
+                  "internalType": "uint80",
+                  "name": "roundId",
+                  "type": "uint80"
+                },
+                {
+                  "internalType": "int256",
+                  "name": "answer",
+                  "type": "int256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "updatedAt",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint80",
+                  "name": "answeredInRound",
+                  "type": "uint80"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "owner",
+              "outputs": [
+                {
+                  "internalType": "address",
+                  "name": "",
+                  "type": "address"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "period",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "renounceOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "address",
+                  "name": "newOwner",
+                  "type": "address"
+                }
+              ],
+              "name": "transferOwnership",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "underlying",
+              "outputs": [
+                {
+                  "internalType": "string",
+                  "name": "",
+                  "type": "string"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "int256",
+                  "name": "_answer",
+                  "type": "int256"
+                }
+              ],
+              "name": "updateAnswer",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "version",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            }
+          ]
+        },
+        "MathLibraryDefibets": {
+          "address": "0x0D2fBA26620008B39c1307c8e86bA4EE14cC4bFF",
+          "abi": [
+            {
+              "inputs": [],
+              "name": "MathLibraryDefibets__WrongParameter",
+              "type": "error"
+            },
+            {
+              "inputs": [],
+              "name": "BILLION",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "Z_TABLE_MAX",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "lowerPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "upperPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "currPrice",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "impliedVolatility",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "impliedVolatilityTime",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "timeUntilEpxiry",
+                  "type": "uint256"
+                }
+              ],
+              "name": "calculateProbabilityRange",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "pure",
+              "type": "function"
+            }
+          ]
+        },
+        "PointTracker": {
+          "address": "0xf9602506915577CC4bc31E9c0F219e7514f65fF9",
           "abi": [
             {
               "inputs": [

@@ -16,7 +16,7 @@ contract PointTracker is Ownable {
     error PointTracker__NotEnoughPoints();
 
     uint256 public constant MINIMUM_DFI_AMOUNT = 0.1 ether;
-    uint256 public constant STARTING_POINTS = 100;
+    uint256 public immutable i_startingPoints;
 
     /* === State Varibales === */
     address private manager;
@@ -38,7 +38,7 @@ contract PointTracker is Ownable {
 
     /* === Modifier === */
     modifier seasonIsActive() {
-        if (seasonActive == false ) {
+        if (seasonActive == false) {
             revert PointTracker__SeasonIsNotActive();
         }
 
@@ -52,8 +52,9 @@ contract PointTracker is Ownable {
         _;
     }
 
-    constructor(address _manager) {
+    constructor(address _manager, uint256 startingPoints) {
         manager = _manager;
+        i_startingPoints = startingPoints;
     }
 
     /* === Mutation Functions === */
@@ -62,7 +63,7 @@ contract PointTracker is Ownable {
         _isManager();
         _isPlayerActive(_player);
 
-        pointsInSeason[season][_player]++;
+        pointsInSeason[season][_player] += _points;
 
         emit PointsAdded(_player, _points, pointsInSeason[season][_player]);
     }
@@ -72,7 +73,7 @@ contract PointTracker is Ownable {
         _isPlayerActive(_player);
         _hasEnoughPoints(_player, _points);
 
-        pointsInSeason[season][_player]--;
+        pointsInSeason[season][_player] -= _points;
 
         emit PointsRemoved(_player, _points, pointsInSeason[season][_player]);
     }
@@ -86,7 +87,7 @@ contract PointTracker is Ownable {
             revert PointTracker__AccountNotEligible();
         }
 
-        pointsInSeason[season][msg.sender] = STARTING_POINTS;
+        pointsInSeason[season][msg.sender] = i_startingPoints;
         isActivated[season][msg.sender] = true;
 
         emit AccountActivation(msg.sender, season);
@@ -153,7 +154,7 @@ contract PointTracker is Ownable {
         return endOfSeason;
     }
 
-    function isAccountActive(uint256 _season,address _player) public view returns(bool){
+    function isAccountActive(uint256 _season, address _player) public view returns (bool) {
         return isActivated[_season][_player];
     }
 }

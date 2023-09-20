@@ -18,6 +18,7 @@ export const networkConfig: INetworkConfig = {
     decimalsPriceFeed: 18,
     initialAnswerPrice: parseEther("29000"),
     confirmations: 2,
+    startingPoints: 1000,
   },
   31337: {
     name: "localhost",
@@ -33,6 +34,7 @@ export const networkConfig: INetworkConfig = {
     decimalsPriceFeed: 18,
     initialAnswerPrice: parseEther("29000"),
     confirmations: 2,
+    startingPoints: 1000,
   },
   80001: {
     name: "mumbai",
@@ -48,6 +50,7 @@ export const networkConfig: INetworkConfig = {
     decimalsPriceFeed: 18,
     initialAnswerPrice: parseEther("29000"),
     confirmations: 6,
+    startingPoints: 1000,
   },
 };
 

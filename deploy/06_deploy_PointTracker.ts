@@ -21,7 +21,9 @@ const deployPointTracker: DeployFunction = async (
   if (chainId) {
     const managerContractAddress = (await get("DefiBetsManager")).address;
 
-    const args = [managerContractAddress];
+    const startingPoints = networkConfig[chainId].startingPoints;
+
+    const args = [managerContractAddress, startingPoints];
 
     const tracker = await deploy("PointTracker", {
       from: deployer,
@@ -37,6 +39,6 @@ const deployPointTracker: DeployFunction = async (
   }
 };
 
-deployPointTracker.tags = ["all", "gamer", "tracker"];
+deployPointTracker.tags = ["all", "game", "tracker"];
 
 export default deployPointTracker;

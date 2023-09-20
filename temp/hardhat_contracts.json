@@ -4889,6 +4889,11 @@
           ]
         }
       }
+    },
+    {
+      "name": "hardhat",
+      "chainId": "31337",
+      "contracts": {}
     }
   ],
   "80001": [
@@ -6951,7 +6956,7 @@
           ]
         },
         "PointTracker": {
-          "address": "0xf9602506915577CC4bc31E9c0F219e7514f65fF9",
+          "address": "0xD5E9983a93F72bd55d7D71bA22D5f32D6AE0ffa4",
           "abi": [
             {
               "inputs": [
@@ -6959,6 +6964,11 @@
                   "internalType": "address",
                   "name": "_manager",
                   "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startingPoints",
+                  "type": "uint256"
                 }
               ],
               "stateMutability": "nonpayable",
@@ -7138,19 +7148,6 @@
             },
             {
               "inputs": [],
-              "name": "STARTING_POINTS",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
               "name": "activateAccount",
               "outputs": [],
               "stateMutability": "nonpayable",
@@ -7234,6 +7231,19 @@
             {
               "inputs": [],
               "name": "getSeasonEndDate",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "i_startingPoints",
               "outputs": [
                 {
                   "internalType": "uint256",

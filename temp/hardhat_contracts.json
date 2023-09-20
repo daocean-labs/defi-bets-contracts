@@ -5179,7 +5179,7 @@
           ]
         },
         "DefiBets": {
-          "address": "0x08EeEd9771Eb4695cA367B1CC6dd48D63E555F2c",
+          "address": "0x16a13C7C61e6dD44FAd43A314d29de25edba7ddB",
           "abi": [
             {
               "inputs": [
@@ -5893,7 +5893,7 @@
           ]
         },
         "DefiBetsManager": {
-          "address": "0xBc4aE6aacBA1b080C9B1E89fF4C120E15602bE7a",
+          "address": "0x7A56cAf5C64114B23e646e04da7426557c306759",
           "abi": [
             {
               "inputs": [],
@@ -6876,7 +6876,7 @@
           ]
         },
         "MathLibraryDefibets": {
-          "address": "0x0D2fBA26620008B39c1307c8e86bA4EE14cC4bFF",
+          "address": "0x2dD2C5da91c2580Fc73dd7A13679a097DeF70CCC",
           "abi": [
             {
               "inputs": [],
@@ -6956,7 +6956,7 @@
           ]
         },
         "PointTracker": {
-          "address": "0xD5E9983a93F72bd55d7D71bA22D5f32D6AE0ffa4",
+          "address": "0x31674B173f9b853212857237d35Cc03A3CFbd80A",
           "abi": [
             {
               "inputs": [

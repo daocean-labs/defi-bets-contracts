@@ -12,13 +12,14 @@ contract PointTrackerTest is Test {
     address public OWNER = makeAddr("owner");
     address public BAD_ACTOR = makeAddr("bad_actor");
 
-    uint256 public constant STARTING_USER_BALANCE = 10 ether;
+    uint256 public constant STARTING_USER_BALANCE = 0.9 ether;
     uint256 public constant SEASON_DURATION = 30 days;
+    uint256 public constant STARTING_POINTS = 1000;
     uint256 public endOfSeason;
 
     function setUp() external {
         vm.prank(OWNER);
-        pointTracker = new PointTracker(MANAGER);
+        pointTracker = new PointTracker(MANAGER,STARTING_POINTS);
 
         endOfSeason = block.timestamp + SEASON_DURATION;
 
@@ -29,6 +30,12 @@ contract PointTrackerTest is Test {
     modifier seasonStarted() {
         vm.prank(OWNER);
         pointTracker.startSeason(endOfSeason);
+        _;
+    }
+
+    modifier playerIsActive() {
+        vm.prank(PLAYER);
+        pointTracker.activateAccount();
         _;
     }
 
@@ -96,7 +103,7 @@ contract PointTrackerTest is Test {
         //Assert
 
         uint256 points = pointTracker.getPlayerPoints(1, PLAYER);
-        assertEq(points, 100);
+        assertEq(points, STARTING_POINTS);
     }
 
     function testActivateAccountFailedWhenCallerHasNotEnoughETH() external seasonStarted {
@@ -119,4 +126,18 @@ contract PointTrackerTest is Test {
     ///////////////////////////
     // reducePointsForPlayer //
     ///////////////////////////
+
+    function testReduceointsForPlayerIsCalculating() external seasonStarted playerIsActive {
+        uint256 activeSeason = pointTracker.getLatestSeason();
+        uint256 acutalPointsBefore = pointTracker.getPlayerPoints(activeSeason, PLAYER);
+        console.log("Actual Points:", acutalPointsBefore);
+
+        vm.prank(MANAGER);
+
+        pointTracker.reducePointsForPlayer(PLAYER, 100);
+
+        uint256 actualPoints = pointTracker.getPlayerPoints(activeSeason, PLAYER);
+
+        assertEq(actualPoints, STARTING_POINTS - 100);
+    }
 }

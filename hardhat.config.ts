@@ -12,6 +12,8 @@ import "./tasks/start-season";
 import "./tasks/activate-account";
 import "./tasks/set-vola";
 import "./tasks/init-exp-times";
+import "./tasks/execute-exp-times";
+import "./tasks/set-bet";
 
 function getRemappings() {
   return fs

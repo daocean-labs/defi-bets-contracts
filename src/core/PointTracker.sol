@@ -127,7 +127,7 @@ contract PointTracker is Ownable {
     }
 
     function _hasEnoughPoints(address _player, uint256 _points) internal view {
-        if (pointsInSeason[season][_player] > _points) {
+        if (pointsInSeason[season][_player] < _points) {
             revert PointTracker__NotEnoughPoints();
         }
     }

@@ -10,6 +10,7 @@ The entire protocol consists of several smart contracts. The entry point is the 
 - [Requirements](#requirements)
 - [Quickstart](#quickstart)
 - [Deploying your Smart Contracts to a Live Network](#deploying-your-smart-contracts-to-a-live-network)
+- [Testing](#testing)
 
 ## Requirements
 
@@ -52,8 +53,10 @@ yarn deploy --network sepolia
 2. Generate a new account or add one to deploy the contract(s) from. Additionally you will need to add your Alchemy API key. Rename `.env.example` to `.env` and fill the required keys.
 
 ```
-ALCHEMY_API_KEY="",
 DEPLOYER_PRIVATE_KEY=""
+RPC_URL=""
+ALCHEMY_API_KEY=""
+POLYGON_SCAN_API_KEY=""
 ```
 
 The deployer account is the account that will deploy your contracts. Additionally, the deployer account will be used to execute any function calls that are part of your deployment script.

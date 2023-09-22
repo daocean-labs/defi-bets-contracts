@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "account": "hardhat run scripts/listAccount.ts",
     "deploy": "hardhat deploy --export-all ./temp/hardhat_contracts.json",
-    "setup": "hardhat run scripts/setup.ts --network dmcTestnet",
+    "setup": "hardhat run scripts/setup.ts ",
     "chain": "hardhat node"
   },
   "author": "",

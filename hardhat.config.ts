@@ -47,12 +47,9 @@ const config: HardhatUserConfig = {
     // If the network you are looking for is not here you can add new network settings
 
     dmcTestnet: {
-      // url: "https://testnet-dmc.mydefichain.com:20551/",
-      url: "https://changinode1.defiserver.de/",
-      //url: "https://changi.dfi.team/",
-      // url: "http://127.0.0.1:20551/",
+      url: "https://dmc.mydefichain.com/testnet",
       accounts: [deployerPrivateKey],
-      chainId: 1133,
+      chainId: 1131,
       gas: 30_000_000,
     },
     mumbai: {
@@ -75,10 +72,10 @@ const config: HardhatUserConfig = {
     customChains: [
       {
         network: "dmcTestnet",
-        chainId: 1133,
+        chainId: 1131,
         urls: {
-          apiURL: "https://testnet-dmc.mydefichain.com:8444/api",
-          browserURL: "https://testnet-dmc.mydefichain.com:8444/",
+          apiURL: "https://blockscout.testnet.ocean.jellyfishsdk.com/api",
+          browserURL: "https://blockscout.testnet.ocean.jellyfishsdk.com/",
         },
       },
     ],

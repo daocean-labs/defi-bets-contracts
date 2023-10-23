@@ -1,11 +1,11 @@
 {
-  "1133": [
+  "1131": [
     {
       "name": "dmcTestnet",
-      "chainId": "1133",
+      "chainId": "1131",
       "contracts": {
         "BTCPriceOracle": {
-          "address": "0x4b70067647465d6d797286168661189044D5EA9a",
+          "address": "0xFa3c800b3d49C26138086C2d588a62BBB3050820",
           "abi": [
             {
               "inputs": [
@@ -282,7 +282,7 @@
           ]
         },
         "DefiBets": {
-          "address": "0xCED0d1b34D61c03C0eF62C4b6056F77564620Fae",
+          "address": "0x3Fe07fF47cae6C55Fa0f0F17D29f03326B97F55A",
           "abi": [
             {
               "inputs": [
@@ -996,7 +996,7 @@
           ]
         },
         "DefiBetsManager": {
-          "address": "0x235234291698c6971e29a5D866dC95F7a66e5f8c",
+          "address": "0x5EadF952B713A588dF85d406aecb1a06fCA5dAA3",
           "abi": [
             {
               "inputs": [],
@@ -1684,7 +1684,7 @@
           ]
         },
         "ImpliedVolatilityOracle": {
-          "address": "0xE815f2aD238B218E6becb93d846EA8FF90eDB39C",
+          "address": "0x1dc5f71123152fF7e1eBA55bFe25cb1936dF9d61",
           "abi": [
             {
               "inputs": [
@@ -1979,7 +1979,7 @@
           ]
         },
         "MathLibraryDefibets": {
-          "address": "0xE762d0F235DeB2d83d2F10A9c03B5FB1fbC2fc03",
+          "address": "0x818A58326E608bB73100Cc2377b3927234547eB3",
           "abi": [
             {
               "inputs": [],
@@ -2059,7 +2059,7 @@
           ]
         },
         "PointTracker": {
-          "address": "0x9Bcb695Ea0BBeC9f35417A6B36Bd8C936dafdD20",
+          "address": "0xEAaDaE282b1131E80621Bba7AA4F754978C74962",
           "abi": [
             {
               "inputs": [
@@ -2067,6 +2067,11 @@
                   "internalType": "address",
                   "name": "_manager",
                   "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "startingPoints",
+                  "type": "uint256"
                 }
               ],
               "stateMutability": "nonpayable",
@@ -2246,19 +2251,6 @@
             },
             {
               "inputs": [],
-              "name": "STARTING_POINTS",
-              "outputs": [
-                {
-                  "internalType": "uint256",
-                  "name": "",
-                  "type": "uint256"
-                }
-              ],
-              "stateMutability": "view",
-              "type": "function"
-            },
-            {
-              "inputs": [],
               "name": "activateAccount",
               "outputs": [],
               "stateMutability": "nonpayable",
@@ -2342,6 +2334,19 @@
             {
               "inputs": [],
               "name": "getSeasonEndDate",
+              "outputs": [
+                {
+                  "internalType": "uint256",
+                  "name": "",
+                  "type": "uint256"
+                }
+              ],
+              "stateMutability": "view",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "i_startingPoints",
               "outputs": [
                 {
                   "internalType": "uint256",
@@ -4889,11 +4894,6 @@
           ]
         }
       }
-    },
-    {
-      "name": "hardhat",
-      "chainId": "31337",
-      "contracts": {}
     }
   ],
   "80001": [

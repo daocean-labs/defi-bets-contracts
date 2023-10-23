@@ -89,14 +89,41 @@ async function main() {
     console.log(`Max Duration: ${maxDuration}`);
     console.log(`Slot size: ${slot}`);
 
-    const trxInitBets = await managerContract.initializeBets(
-      hash,
-      nextDate.getTime() / 1000,
-      minDuration,
-      maxDuration,
-      slot
-    );
-    await trxInitBets.wait(1);
+    try {
+      const func = managerContract.getFunction("initializeBets");
+
+      const gas = await func.estimateGas(
+        hash,
+        nextDate.getTime() / 1000,
+        minDuration,
+        maxDuration,
+        slot
+      );
+
+      const trxInitBets = await func.send(
+        hash,
+        nextDate.getTime() / 1000,
+        minDuration,
+        maxDuration,
+        slot,
+        {
+          gasLimit: (gas * BigInt(120)) / BigInt(100),
+        }
+      );
+
+      await trxInitBets.wait(1);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // const trxInitBets = await managerContract.initializeBets(
+    //   hash,
+    //   nextDate.getTime() / 1000,
+    //   minDuration,
+    //   maxDuration,
+    //   slot
+    // );
+    // await trxInitBets.wait(1);
 
     console.log("Finished!");
   }

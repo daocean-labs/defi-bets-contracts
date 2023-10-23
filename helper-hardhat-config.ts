@@ -4,7 +4,7 @@ interface INetworkConfig {
   [key: number]: any;
 }
 export const networkConfig: INetworkConfig = {
-  1133: {
+  1131: {
     name: "dmcTestnet",
     minDuration: 86400,
     maxDuration: 2592000,

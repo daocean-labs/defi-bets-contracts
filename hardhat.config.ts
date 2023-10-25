@@ -14,6 +14,7 @@ import "./tasks/set-vola";
 import "./tasks/init-exp-times";
 import "./tasks/execute-exp-times";
 import "./tasks/set-bet";
+import "./tasks/transfer-ownership-oracle";
 
 function getRemappings() {
   return fs

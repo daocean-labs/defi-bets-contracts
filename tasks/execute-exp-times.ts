@@ -66,12 +66,17 @@ task("execute-exp-times", "Execute all possible expiration times").setAction(
             ).toLocaleTimeString()}`
           );
         }
+        const executeFunction = manager.getFunction("executeExpiration");
 
-        const trx = await manager.executeExpiration(
+        const gas = await executeFunction.estimateGas(
           expTimes[i],
           "BTC",
           roundId
         );
+
+        const trx = await executeFunction.send(expTimes[i], "BTC", roundId, {
+          gasLimit: (gas * BigInt(120)) / BigInt(100),
+        });
         await trx.wait(1);
         console.log(`ExpTime ${expTimes[i]} is executed!`);
       }

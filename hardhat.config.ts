@@ -59,6 +59,11 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
       chainId: 80001,
     },
+    dmc: {
+      url: "https://dmc01.mydefichain.com/mainnet",
+      accounts: [deployerPrivateKey],
+      chainId: 1130,
+    },
   },
   namedAccounts: {
     deployer: {
@@ -70,6 +75,7 @@ const config: HardhatUserConfig = {
     apiKey: {
       dmcTestnet: " ",
       polygonMumbai: polygonScanApiKey,
+      dmc: " "
     },
     customChains: [
       {
@@ -80,6 +86,14 @@ const config: HardhatUserConfig = {
           browserURL: "https://blockscout.testnet.ocean.jellyfishsdk.com/",
         },
       },
+      {
+        network: "dmc",
+        chainId: 1130,
+        urls: {
+          apiURL: "https://mainnet-dmc.mydefichain.com:8441/api",
+          browserURL: "https://mainnet-dmc.mydefichain.com:8441/",
+        },
+      }
     ],
   },
   paths: {

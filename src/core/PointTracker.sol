@@ -14,6 +14,7 @@ contract PointTracker is Ownable {
     error PointTracker__SeasonIsActive();
     error PointTracker__NotEndOfSeasonReached();
     error PointTracker__NotEnoughPoints();
+    error PointTracker__BetTimeBeforeSeasonStart();
 
     uint256 public constant MINIMUM_DFI_AMOUNT = 0.1 ether;
     uint256 public immutable i_startingPoints;
@@ -28,6 +29,8 @@ contract PointTracker is Ownable {
 
     mapping(uint256 => mapping(address => uint256)) private pointsInSeason;
     mapping(uint256 => mapping(address => bool)) private isActivated;
+    mapping(uint256 => uint256) private seasonStartTimes;
+    
 
     /* === Events === */
     event AccountActivation(address indexed player, uint256 season);
@@ -59,9 +62,13 @@ contract PointTracker is Ownable {
 
     /* === Mutation Functions === */
 
-    function addPointsForPlayer(address _player, uint256 _points) external seasonIsActive {
+    function addPointsForPlayer(address _player, uint256 _points,uint256 _expTime) external seasonIsActive {
         _isManager();
         _isPlayerActive(_player);
+
+        if(_expTime < getSeasonStartTime(season)){
+            revert PointTracker__BetTimeBeforeSeasonStart();
+        }
 
         pointsInSeason[season][_player] += _points;
 
@@ -108,6 +115,8 @@ contract PointTracker is Ownable {
         season++;
 
         endOfSeason = _endOfSeason;
+
+        seasonStartTimes[season] = block.timestamp;
 
         emit SeasonStarted(season);
     }
@@ -156,5 +165,9 @@ contract PointTracker is Ownable {
 
     function isAccountActive(uint256 _season, address _player) public view returns (bool) {
         return isActivated[_season][_player];
+    }
+
+    function getSeasonStartTime(uint256 _season) public view returns(uint256){
+        return seasonStartTimes[_season];
     }
 }

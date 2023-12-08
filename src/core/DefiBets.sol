@@ -124,7 +124,7 @@ contract DefiBets is Ownable, IDefiBets {
         emit BetPlaced(_account, _betSize, _winning, _expTime, _minPrice, _maxPrice, betIDs.current());
     }
 
-    function claimForAccount(address _account, uint256 _betID) external returns (uint256, bool) {
+    function claimForAccount(address _account, uint256 _betID) external returns (uint256, bool,uint256) {
         _isDefiBetManager();
         _isClaimed(_betID);
 
@@ -152,7 +152,7 @@ contract DefiBets is Ownable, IDefiBets {
 
         emit Claimed(_account, _betID, _profits);
 
-        return (_tokensForClaim, _profits);
+        return (_tokensForClaim, _profits,_betTokenInfo.expTime);
     }
 
     function performExpiration(uint256 _expTime, uint256 _expPrice) external {

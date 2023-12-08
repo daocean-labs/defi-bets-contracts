@@ -11,7 +11,7 @@ interface IDefiBets {
         uint256 _winning
     ) external;
 
-    function claimForAccount(address _account, uint256 _betID) external returns (uint256, bool);
+    function claimForAccount(address _account, uint256 _betID) external returns (uint256, bool,uint256);
 
     function setBetParamater(
         uint256 _minBetDuration,

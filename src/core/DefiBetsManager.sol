@@ -102,11 +102,11 @@ contract DefiBetsManager is Pausable, Ownable {
         _isPointTrackerSet();
         address _defiBets = defiBetsContracts[_hash];
 
-        (uint256 _tokenAmount, bool _profit) = IDefiBets(_defiBets).claimForAccount(msg.sender, _tokenId);
+        (uint256 _tokenAmount, bool _profit,uint256 expTime) = IDefiBets(_defiBets).claimForAccount(msg.sender, _tokenId);
 
         //Update the points of the user
         if (_profit) {
-            IPointTracker(pointTracker).addPointsForPlayer(msg.sender, _tokenAmount);
+            IPointTracker(pointTracker).addPointsForPlayer(msg.sender, _tokenAmount,expTime);
         }
     }
 
